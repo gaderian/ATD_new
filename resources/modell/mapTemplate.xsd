@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="mapList" type="mapListType"/>
+
+  <xs:complexType name="tileType" mixed="true">
+    <xs:sequence>
+      <xs:element type="positionType" name="tilePos" />
+      <xs:element type="positionType" name="sendToPos" maxOccurs="4" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="tileType" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="positionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:int" name="column" use="optional"/>
+        <xs:attribute type="xs:int" name="row" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="mapListType">
+    <xs:sequence>
+      <xs:element type="mapType" name="map" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>1 or more repetitions:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mapType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="waves"/>
+      <xs:element type="xs:string" name="winScore"/>
+      <xs:element type="xs:string" name="startingGold"/>
+      <xs:element type="tileType" name="tile" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>1 or more repetitions:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

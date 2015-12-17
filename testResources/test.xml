@@ -1,0 +1,63 @@
+<mapList>
+    <!--1 or more repetitions:-->
+    <map>
+        <name>MyMap</name>
+        <waves>3</waves>
+        <winScore>3</winScore>
+        <startingGold>3</startingGold>
+
+        <!--1 or more repetitions:-->
+        <tile tileType="TowerTile">
+            <tilePos column="1" row="1" />
+        </tile>
+        <tile tileType="TCross">
+            <tilePos column="2" row="2" />
+            <sendToPos column="2" row="3" />
+            <sendToPos column="3" row="2" />
+        </tile>
+        <tile tileType="PathWay">
+            <tilePos column="2" row="3"/>
+            <sendToPos column="3" row="3"/>
+        </tile>
+        <tile tileType="PathWay">
+            <tilePos column="3" row="4"/>
+            <sendToPos column="2" row="1"/>
+        </tile>
+        <tile tileType="PathWay">
+            <tilePos column="5" row="7"/>
+            <sendToPos column="3" row="3"/>
+        </tile>
+    </map>
+
+    <map>
+        <name>MapWithOnlyOneTowerTile</name>
+        <waves>3</waves>
+        <winScore>3</winScore>
+        <startingGold>3</startingGold>
+
+        <!--1 or more repetitions:-->
+        <tile tileType="TowerTile">
+            <tilePos column="1" row="1" />
+        </tile>
+    </map>
+
+    <map>
+        <name>MapWithDifferentTileTypes</name>
+        <waves>7</waves>
+        <winScore>4</winScore>
+        <startingGold>150</startingGold>
+
+        <tile tileType="TowerTile">
+            <tilePos column="1" row="1" />
+        </tile>
+        <tile tileType="PathWay">
+            <tilePos column="1" row="2"/>
+            <sendToPos column="1" row="3" />
+        </tile>
+        <tile tileType="TCross">
+            <tilePos column="1" row="3"/>
+            <sendToPos column="2" row="3" />
+            <sendToPos column="1" row="4" />
+        </tile>
+    </map>
+</mapList>
