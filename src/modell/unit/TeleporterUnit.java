@@ -39,7 +39,7 @@ public class TeleporterUnit extends Unit {
     }
 
     /**
-     * Has the main.unit placed a teleportation start?
+     * Has the unit placed a teleportation start?
      */
     private boolean hasTeleStart(){
         return hasTeleStart;
@@ -50,7 +50,7 @@ public class TeleporterUnit extends Unit {
     }
 
     /**
-     * Returns a teleport main.tile to place in the map.
+     * Returns a teleport tile to place in the map.
      * @return
      */
     @Override

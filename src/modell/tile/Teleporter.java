@@ -10,9 +10,9 @@ import java.net.MalformedURLException;
 import modell.unit.Unit;
 
 /**
- * main.java.main.tile.main.tile.
+ * java.tile.tile.
  * Telepoter is a class that extends the 
- * main.java.main.tile.main.tile.PathTile class. The class have a own
+ * java.tile.tile.PathTile class. The class have a own
  * image that will be used in the user interface. 
  *
  */
@@ -21,9 +21,9 @@ public class Teleporter extends PathTile {
     private Position endTelePos = null;
     
     /**
-     * main.java.main.tile.main.tile. Teleporter is the constructor that
+     * java.tile.tile. Teleporter is the constructor that
      * will read in the image when the program will create a object
-     * of the class main.java.main.tile.main.tile.Default
+     * of the class java.tile.tile.Default
      */
     public Teleporter(Position p) throws MalformedURLException {
 	    super(p, "teleporterTile.png");

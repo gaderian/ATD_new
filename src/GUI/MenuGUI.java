@@ -18,7 +18,7 @@ public class MenuGUI {
     private JButton quit;
     private JButton sound;
     private JButton about;
-    private String gameTitle = "Anti main.tower Defence";
+    private String gameTitle = "Anti tower Defence";
     private JPanel upperPanel = null;
     private JPanel middlePanel = null;
     private JPanel lowerPanel;
@@ -174,7 +174,7 @@ public class MenuGUI {
 
     /**
      *
-     * @return The main menu main.GUI as a JPanel
+     * @return The main menu GUI as a JPanel
      */
     public JPanel getPanel() {
         panel.setBackground(new Color(56, 134, 96));

@@ -28,7 +28,7 @@ import java.util.Hashtable;
 
 /**
  * Class:       TileMap
- * <p/>
+ *
  * Author:      Erik Moström
  * cs-user:     dv14emm
  * Date:        2015-12-01
@@ -42,19 +42,32 @@ public class MapFactory {
     private Hashtable<String, Class<?>> tileTypes;
 
     /**
-     * Creates a new map factory.
+     * Creates a new instance of MapFactory. The factory will be able to return
+     * Map instances containing information of a specific level. This
+     * constructor is for when the map file is within the project structure.
      *
-     * @param mapFilePath
-     * @throws IOException
-     * @throws SAXException
+     * @param mapFile the name of the file containing the maps.
+     * @throws IOException when something goes wrong reading the map/schema file
+     * @throws SAXException when something goes wrong when parsing either of the
+     * files
      */
-    public MapFactory(String mapFilePath) throws IOException, SAXException {
-        validateMap(new StreamSource( getClass().getResourceAsStream(mapFilePath) ));
-        mapList = getMaps(new InputSource( getClass().getResourceAsStream(mapFilePath)));
+    public MapFactory(String mapFile) throws IOException, SAXException {
+        validateMap(new StreamSource( getClass().getResourceAsStream(mapFile) ));
+        mapList = getMaps(new InputSource( getClass().getResourceAsStream(mapFile)));
         mapNames = collectMapNames();
         tileTypes = new Hashtable<>();
     }
 
+    /**
+     * Creates a new instance of MapFactory. The factory will be able to return
+     * Map instances containing information of a specific level. This
+     * constructor is for when the map file is outside of the compiled jar-file.
+     *
+     * @param mapFilePath a URL to the file containing the maps
+     * @throws IOException when something goes wrong reading the map/schema file
+     * @throws SAXException when something goes wrong when parsing either of the
+     * files
+     */
     public MapFactory(URL mapFilePath) throws IOException, SAXException {
         validateMap(new StreamSource( mapFilePath.openStream() ));
         mapList = getMaps(new InputSource( mapFilePath.openStream() ));
@@ -62,6 +75,14 @@ public class MapFactory {
         tileTypes = new Hashtable<>();
     }
 
+    /**
+     * Method for reading all the maps in a map-file and putting them into a
+     * NodeList.
+     *
+     * @param maps InputSource constructed from the map-file
+     * @return a NodeList containing all the maps of the map-file
+     * @throws IOException when unable to read all the maps.
+     */
     private NodeList getMaps(InputSource maps) throws IOException {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -77,8 +98,13 @@ public class MapFactory {
         }
     }
 
+    /**
+     * Will collect the name for each map and put it into an ArrayList.
+     *
+     * @return an ArrayList containing all the map names
+     */
     private ArrayList<String> collectMapNames(){
-        ArrayList list = new ArrayList<String>();
+        ArrayList list = new ArrayList<>();
         for (int i = 0; i < mapList.getLength(); i++) {
             Node node = mapList.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -109,17 +135,23 @@ public class MapFactory {
         return map;
     }
 
-
+    /**
+     * Will construct a map from the information collected from the map-file.
+     *
+     * @param e an Element containing all the elements of the map.
+     * @return the finished Map.
+     */
     private Map makeMap(Element e) {
         Map map = new Map();
         NodeList mapInfo = e.getChildNodes();
 
+        /*Set the simple values*/
         map.setName(getTagValue("name", e));
         map.setWaves(Integer.parseInt(getTagValue("waves", e)));
         map.setWinScore(Integer.parseInt(getTagValue("winScore", e)));
         map.setStartingGold(Integer.parseInt(getTagValue("startingGold", e)));
 
-
+        /*Find all the tiles of the map and put them into the Map object*/
         for (int i = 0; i < mapInfo.getLength(); i++) {
             Node node = mapInfo.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -130,7 +162,6 @@ public class MapFactory {
                         map.addTile(t);
                     } catch (WrongClassTypeException e1) {
                         e1.printStackTrace();
-                        //TODO should probably send it further "up"
                     }
                 }
             }
@@ -147,29 +178,33 @@ public class MapFactory {
      * @return a string representing the value
      */
     private String getTagValue(String tag, Element element) {
-        NodeList nlList = element.getElementsByTagName(tag).item(0).getChildNodes();
+        NodeList nlList =
+                element.getElementsByTagName(tag).item(0).getChildNodes();
         Node nValue = nlList.item(0);
         return nValue.getNodeValue();
     }
 
     /**
-     * @param node
-     * @return TODO
-     * @throws WrongClassTypeException
+     * Will make a Tile object to put into the map.
+     *
+     * @param node a Node containing the tiles information
+     * @return a finished tile.
+     * @throws WrongClassTypeException when the class specified to be used as a
+     * tile doesn't extend the Tile class
      */
     private Tile constructTile(Node node) throws WrongClassTypeException {
         Node tileTypeNode = node.getAttributes().getNamedItem("tileType");
 
-        //TODO fix this if possible
-        /*Gets the name of the main.tile that should be loaded*/
+        /*Gets the name of the tile that should be loaded*/
         String type = "modell.tile." + tileTypeNode.getNodeValue();
         Class<?> tileType = tileTypes.get(type);
 
         if (tileType == null) {
             tileType = readClass(type);
+            tileTypes.put(type, tileType);
         }
 
-        /*Gets the position of the main.tile*/
+        /*Get the position of the tile*/
         NodeList positionList = ((Element)node).getElementsByTagName("sendToPos");
 
         Node tilePos = ((Element)node).getElementsByTagName("tilePos").item(0);
@@ -183,8 +218,8 @@ public class MapFactory {
 
             tile = (Tile) constructor.newInstance(p);
 
-            /* If the main.tile is a PathTile:
-             * Add position(s) to which the main.tile will send units.
+            /* If the tile is a PathTile:
+             * Add position(s) to which the tile will send units.
              */
             if (PathTile.class.isAssignableFrom(tile.getClass())) {
                 PathTile pTile = (PathTile) tile;
@@ -207,7 +242,7 @@ public class MapFactory {
     }
 
     /**
-     * Will extract the position from a position element int the .xml file
+     * Will extract the position from a position element in the .xml file
      *
      * @param pos the node containing the information
      * @return an instance of Position.
@@ -219,34 +254,30 @@ public class MapFactory {
     }
 
     /**
-     * Loads a main.tile class into the program, if the
-     * TODO better description
+     * Loads a tile class and returns the class.
      *
-     * @param className
-     * @return
+     * @param className the name of the class.
+     * @return the Class with the specified name.
+     * @throws WrongClassTypeException when the class doesn't extend Tile
      */
     private Class<?> readClass(String className) throws WrongClassTypeException {
         Class c = null;
 
         try {
-            /*Create an url to the directory the class should exist in*/
-            URL classUrl = (new java.io.File("main/java/tile/")).toURI().toURL();
-
             /*start an class loader that use URLs*/
-            URL[] classUrls = {classUrl};
+            URL[] classUrls = {};
             URLClassLoader ucl = new URLClassLoader(classUrls);
 
             c = ucl.loadClass(className);
         } catch (ClassNotFoundException e) {
             //TODO exception handling
             e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         }
 
         /*Check if the class loaded actually is a subclass of Tile*/
         if (!Tile.class.isAssignableFrom(c)) {
-            throw new WrongClassTypeException();
+            throw new WrongClassTypeException("The specified tile doesn't " +
+                    "extend the Tile class");
         }
 
         tileTypes.put(c.getName(), c);

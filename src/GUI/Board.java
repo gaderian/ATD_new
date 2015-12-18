@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 /**
  * Class: Board
- * main.GUI class for drawing the game board for the selected level, which in turn consists of several blocks
+ * GUI class for drawing the game board for the selected level, which in turn consists of several blocks
  *
  * Created by Joakim on 2015-12-07.
  */
@@ -40,7 +40,7 @@ public class Board {
     }
 
     /**
-     * Draws the blocks the game board consists of, it checks which main.tile is suppose to be in which position and draws it
+     * Draws the blocks the game board consists of, it checks which tile is suppose to be in which position and draws it
      * there as a block
      *
      * @param g

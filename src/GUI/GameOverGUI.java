@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Created by id12jzn on 2015-12-15.
  *
- * Creates the main.GUI for when a game is ended as a JPanel
+ * Creates the GUI for when a game is ended as a JPanel
  */
 public class GameOverGUI {
 
@@ -112,7 +112,7 @@ public class GameOverGUI {
 
     /**
      *
-     * @return The main menu main.GUI as a JPanel
+     * @return The main menu GUI as a JPanel
      */
     public JPanel getPanel() {
         //panel.setBackground(new Color(169,255,151));

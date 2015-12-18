@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Class: CLayout
- * This class builds the main.GUI for the game. This main.GUI is of type CardLayout in which this class i able to switch between
+ * This class builds the GUI for the game. This GUI is of type CardLayout in which this class i able to switch between
  * different cards after it built them.
  *
  * Created by Zacke on 2015-12-01.
@@ -92,7 +92,7 @@ public class CLayout {
     }
 
     /**
-     * Shows a specific card in the main.GUI
+     * Shows a specific card in the GUI
      *
      * @param s String of which card to show
      */
@@ -164,7 +164,7 @@ public class CLayout {
     }
 
     /**
-     * @return The size of a main.tile in the game board
+     * @return The size of a tile in the game board
      *
      * TODO Hårdkoda inte detta!
      */

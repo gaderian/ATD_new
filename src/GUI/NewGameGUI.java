@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Class: NewGameGUI
- * Class for creating the main.GUI for the new game menu
+ * Class for creating the GUI for the new game menu
  *
  * Created by Joakim on 2015-12-02.
  */

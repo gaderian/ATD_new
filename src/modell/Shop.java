@@ -27,7 +27,7 @@ public class Shop {
     /**
      * A method for buying units.
      *
-     * @param unitTypeId the id of the main.unit to buy.
+     * @param unitTypeId the id of the unit to buy.
      */
     public void buyUnit(int unitTypeId) {
         synchronized (this) {
@@ -45,7 +45,7 @@ public class Shop {
                     shopUser.decreaseCredits(TeleporterUnit.getPrice());
                     break;
                 default:
-                    throw new IllegalStateException("There is no main.unit with the id of " + unitTypeId);
+                    throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
             }
         }
     }
@@ -53,9 +53,9 @@ public class Shop {
 
     /**
      *
-     * @param unitTypeId the id of the main.unit.
+     * @param unitTypeId the id of the unit.
      *
-     * @return returns true if the user has enough money to buy a main.unit and false if not.
+     * @return returns true if the user has enough money to buy a unit and false if not.
      */
     public boolean canBuyUnit(int unitTypeId){
         switch (unitTypeId){
@@ -74,15 +74,15 @@ public class Shop {
                     return true;
                 }
                 break;
-            default: throw new IllegalStateException("There is no main.unit with the id of " + unitTypeId);
+            default: throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
         }
         return false;
     }
     /**
      *
-     * @param unitTypeId the id of the main.unit.
+     * @param unitTypeId the id of the unit.
      *
-     * @return returns a URL for the specified main.unit type.
+     * @return returns a URL for the specified unit type.
      */
     public URL getUnitImg(int unitTypeId){
         switch (unitTypeId){
@@ -95,7 +95,7 @@ public class Shop {
             case 3:
                 TeleporterUnit.getImg();
                 break;
-            default: throw new IllegalStateException("There is no main.unit with the id of " + unitTypeId);
+            default: throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
         }
         return null;
     }

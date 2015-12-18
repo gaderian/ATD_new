@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 /**
  * Class HighScoreGUI
- * Builds the main.GUI for the highscore panel
+ * Builds the GUI for the highscore panel
  *
  * Created by Joakim on 2015-12-02.
  */
@@ -110,7 +110,7 @@ public class HighScoreGUI {
     }
     /**
      *
-     * @return The highscore main.GUI as a JPanel
+     * @return The highscore GUI as a JPanel
      */
     public JPanel getPanel() {
 

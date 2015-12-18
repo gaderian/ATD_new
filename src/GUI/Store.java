@@ -6,7 +6,7 @@ import java.net.URL;
 
 /**
  * Class: Store
- * main.GUI class for drawing the store buttons
+ * GUI class for drawing the store buttons
  *
  * Created by Zacke on 2015-12-08.
  */

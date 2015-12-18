@@ -1,6 +1,6 @@
 package modell.tile;
 /*
- * main.java.main.tile.main.tile
+ * java.tile.tile
  * 
  * Date 1/12- 2015
  * @author id12jwn
@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * main.java.main.tile.main.tile is a class is a abctact class...
+ * java.tile.tile is a class is a abctact class...
  */
 public abstract class Tile {
 
@@ -23,7 +23,7 @@ public abstract class Tile {
     private Position pos;
 
     /**
-     * main.tile is the constructor that will set the values...
+     * tile is the constructor that will set the values...
      * @param p
      * @param imgPath
      */
@@ -62,7 +62,7 @@ public abstract class Tile {
 
     /**
      * getImage is a getter that will get the image of
-     * the main.tile
+     * the tile
      * @return image
      */
     public BufferedImage getImg(){
@@ -70,7 +70,7 @@ public abstract class Tile {
     }
 
     /**
-     * getPostion is a getter that will get the position of the main.tile
+     * getPostion is a getter that will get the position of the tile
      * @return
      */
     public Position getPosition() {

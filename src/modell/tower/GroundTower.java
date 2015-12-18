@@ -16,10 +16,10 @@ public class GroundTower extends Tower {
     private static final int range = 150;
 
     /**
-     * Constructor of a main.tower only able to shoot at ground units.
+     * Constructor of a tower only able to shoot at ground units.
      *
-     * @param position the position of the main.tower.
-     * @param id the id of the main.tower.
+     * @param position the position of the tower.
+     * @param id the id of the tower.
      */
     public GroundTower(Position position, int id){
         super(range, speed, damage, false, true, position);

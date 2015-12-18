@@ -73,7 +73,7 @@ public abstract class Unit {
     /**
      * Moves to the nextPos
      *
-     * @return returns true if the main.unit moved.
+     * @return returns true if the unit moved.
      */
     public boolean move() {
         boolean ret = false;
@@ -125,7 +125,7 @@ public abstract class Unit {
 
     /**
      *
-     * @return the position one step closer to the middle of the next main.tile
+     * @return the position one step closer to the middle of the next tile
      */
     private Position getNextPos() {
         int currentX = this.pos.getX();
@@ -150,7 +150,7 @@ public abstract class Unit {
 
     /**
      *
-     * @return true if the main.unit is on the position in the middle of the main.tile,
+     * @return true if the unit is on the position in the middle of the tile,
      * false if not.
      */
     public boolean isInMiddleOfTile() {

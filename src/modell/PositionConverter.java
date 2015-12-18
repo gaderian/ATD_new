@@ -7,9 +7,9 @@ public class PositionConverter {
     private static final int tileSize = 54;
 
     /**
-     * Translate a tileCoordinate to a graphic coordinate (the middle coordinate of the main.tile).
+     * Translate a tileCoordinate to a graphic coordinate (the middle coordinate of the tile).
      *
-     * @param tilePos the position of the main.tile to get the middle position of.
+     * @param tilePos the position of the tile to get the middle position of.
      * @return the graphic coordinate.
      */
     public static Position tilePosConverter(Position tilePos){
@@ -25,8 +25,8 @@ public class PositionConverter {
     /**
      * Translate a graphic coordinate to a tileCoordinate.
      *
-     * @param unitPos the position of the main.unit.
-     * @return the coordinate of the main.tile the main.unit is on.
+     * @param unitPos the position of the unit.
+     * @return the coordinate of the tile the unit is on.
      */
     public static Position unitPosConverter(Position unitPos){
         int posX = unitPos.getX();
