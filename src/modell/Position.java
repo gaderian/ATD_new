@@ -60,43 +60,6 @@ public class Position {
 		double tmp = sqrt(xDistance*xDistance + yDistance*yDistance);
 		return (int) Math.ceil(tmp);
 
-
-	}
-
-	/**
-	 * Will return the position to the south, i.e down.
-	 * @return the position to the south
-	 */
-	public Position getPosToSouth(){
-		Position south = new Position(this.x, this.y+1);
-		return south;
-	}
-
-	/**
-	 * Will return the position to the west, i.e left.
-	 * @return the position to the west
-	 */
-	public Position getPosToWest(){
-		Position west = new Position(this.x-1, this.y);
-		return west;
-	}
-
-	/**
-	 * Will return the position to the north, i.e upp.
-	 * @return the position to the north
-	 */
-	public Position getPosToNorth(){
-		Position north = new Position(this.x, this.y-1);
-		return north;
-	}
-
-	/**
-	 * Will return the position to the east, i.e right.
-	 * @return the position to the east
-	 */
-	public Position getPosToEast(){
-		Position east = new Position(this.x+1, this.y);
-		return east;
 	}
 
 

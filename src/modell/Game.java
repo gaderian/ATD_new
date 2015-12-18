@@ -73,7 +73,7 @@ public class Game {
 
             while (itrUnits.hasNext()) {
                 currentUnit = (Unit) itrUnits.next();
-            /*Remove the main.unit if it has reached goal*/
+            /*Remove the unit if it has reached goal*/
                 if (currentUnit.hasReachedGoal()) {
                     tempEvent = currentUnit.generateGraphicEvent();
                     this.graphicState.removeGraphicEvent(tempEvent);
@@ -81,7 +81,7 @@ public class Game {
                     this.unitsReachedGoal++;
                     this.user.setPoints(this.user.getScore()+1);
                 }
-            /*Remove the main.unit if it's dead*/
+            /*Remove the unit if it's dead*/
                 else if (!currentUnit.isAlive()) {
                     tempEvent = currentUnit.generateGraphicEvent();
                     this.graphicState.removeGraphicEvent(tempEvent);
@@ -110,13 +110,13 @@ public class Game {
         while (itrTowers.hasNext()) {
             currentTower = (Tower) itrTowers.next();
             GraphicEvent e = null;
-            /*Does the main.tower have a target?*/
+            /*Does the tower have a target?*/
             if (currentTower.hasValidTarget()) {
                 /*Call the attack mathod*/
                 e = currentTower.attack(timeOfGame);
 
             } else {
-                /*Try to find a target for the main.tower*/
+                /*Try to find a target for the tower*/
                 ListIterator itrUnits = units.listIterator();
                 while (itrUnits.hasNext()) {
                     currentUnit = (Unit) itrUnits.next();
@@ -174,17 +174,17 @@ public class Game {
         TileAction currentTile;
         Position tempTilePos;
 
-        /*Set the next position of the main.unit to the position of the start main.tile*/
+        /*Set the next position of the unit to the position of the start tile*/
         Position posToSet = (map.getStartTile().getPosition());
         unit.setCurrentPosition(posToSet);
         unit.setNextTilePos(posToSet);
-        /*Call landon for the first main.tile the main.unit spawns on*/
+        /*Call landon for the first tile the unit spawns on*/
         tempTilePos = PositionConverter.unitPosConverter(unit.getPosition());
         currentTile = (TileAction) map.getTileAt(tempTilePos);
         currentTile.landOn(unit);
 
         this.units.add(unit);
-        /*If the main.unit it clickable add it to the clickable list*/
+        /*If the unit it clickable add it to the clickable list*/
         if(unit.isClickable()){
             this.clickUnits.add(unit);
         }
@@ -220,25 +220,25 @@ public class Game {
         /*Place all towers on random tiles*/
         while(placedTowers < towersToPlace){
             random = (int)(Math.random() * (nrOfTowerTiles));
-            /*Add a main.tower and set the position of the main.tower to a random towerTiles position*/
+            /*Add a tower and set the position of the tower to a random towerTiles position*/
 
             tempTilePos = towerTileList.get(random).getPosition();
             tempTowerTile = (TowerTile) map.getTileAt(tempTilePos);
             if(!tempTowerTile.isOccupied()){
 
-                /*Place every other main.tower as Air main.tower and Ground main.tower*/
+                /*Place every other tower as Air tower and Ground tower*/
                 if(placedTowers % 2 == 0){
                     tower = new GroundTower(PositionConverter.tilePosConverter(tempTilePos),getNextObjectId());
                 }else{
                     tower = new AirTower(PositionConverter.tilePosConverter(tempTilePos),getNextObjectId());
-                    //main.tower = new GroundTower(modell.PositionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+                    //tower = new GroundTower(modell.PositionConverter.tilePosConverter(tempTilePos),getNextObjectId());
                 }
 
                 this.towers.add(tower);
                 tempTowerTile.setOccupied(true);
                 placedTowers++;
 
-                /*Generate a graphic event when the main.tower is added to the game*/
+                /*Generate a graphic event when the tower is added to the game*/
                 GraphicEvent tempEvent = tower.generateGraphicEvent();
                 this.graphicState.addGraphicEvent(tempEvent);
 

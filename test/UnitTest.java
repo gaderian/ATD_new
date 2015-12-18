@@ -42,7 +42,7 @@ public class UnitTest {
     }
 
     /**
-     * Test of isFlying method with flying main.unit, of class Unit.
+     * Test of isFlying method with flying unit, of class Unit.
      */
     @Test
     public void testIsFlyingTrue() {
@@ -53,7 +53,7 @@ public class UnitTest {
     }
 
     /**
-     * Test of isFlying method with flying main.unit, of class Unit.
+     * Test of isFlying method with flying unit, of class Unit.
      */
     @Test
     public void testIsFlyingFalse() {

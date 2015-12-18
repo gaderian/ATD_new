@@ -1,5 +1,5 @@
 package modell.tile;/*
- * main.java.main.tile.main.tile.TCross
+ * java.tile.tile.TCross
  * 
  * Date 27/11- 2015
  * @author id12jwn
@@ -11,7 +11,7 @@ import modell.Position;
 import modell.unit.Unit;
 
 /**
- * main.java.main.tile.main.tile.TCross a class that extends the main.java.main.tile.main.tile.PathTile class. The class
+ * java.tile.tile.TCross a class that extends the java.tile.tile.PathTile class. The class
  * have a own image that will be used in the user interface.   
  */
 public class TCross extends PathTile {
@@ -21,8 +21,8 @@ public class TCross extends PathTile {
     private String TCrossImg;
 
     /**
-     * main.java.main.tile.main.tile.TCross is the constructor that will read in the image when
-     * the program will create a object of the class main.java.main.tile.main.tile.Default
+     * java.tile.tile.TCross is the constructor that will read in the image when
+     * the program will create a object of the class java.tile.tile.Default
      */
     public TCross(Position p) throws MalformedURLException {
         super(p, "TCross.png");

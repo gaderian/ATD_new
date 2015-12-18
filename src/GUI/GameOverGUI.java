@@ -5,7 +5,7 @@ import java.awt.*;
 
 /**
  * Created by id12jzn on 2015-12-15.
- * <p>
+ *
  * Creates the GUI for when a game is ended and returns it as a JPanel
  */
 public class GameOverGUI {
@@ -106,7 +106,7 @@ public class GameOverGUI {
     }
 
     /**
-     * @return The main menu main.GUI as a JPanel
+     * @return The main menu GUI as a JPanel
      */
     public JPanel getPanel() {
         upperPanel = buildUpperPanel();
