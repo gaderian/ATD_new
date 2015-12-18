@@ -36,6 +36,7 @@ public class Renderer {
             Position corner = convertPosition(event);
             graphics.drawImage(event.getImage(), corner.getX(), corner.getY(), null);
         }
+
     }
 
     private Position convertPosition(GraphicEvent event) {

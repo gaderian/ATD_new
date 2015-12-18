@@ -3,7 +3,7 @@
         <name>ZiggZagg</name>
         <waves>15</waves>
         <winScore>10</winScore>
-        <startingGold>120</startingGold>
+        <startingGold>105</startingGold>
 
         <!--
         S P P P P P P P P P P
@@ -580,8 +580,8 @@
     <map>
         <name>Joy</name>
         <waves>10</waves>
-        <winScore>10</winScore>
-        <startingGold>100</startingGold>
+        <winScore>12</winScore>
+        <startingGold>150</startingGold>
 
         <!-- Tower Tiles: -->
         <tile tileType="TowerTile">

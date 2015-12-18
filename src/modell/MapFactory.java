@@ -41,6 +41,13 @@ public class MapFactory {
     * the same class several times. */
     private Hashtable<String, Class<?>> tileTypes;
 
+    /**
+     * Creates a new map factory.
+     *
+     * @param mapFilePath
+     * @throws IOException
+     * @throws SAXException
+     */
     public MapFactory(String mapFilePath) throws IOException, SAXException {
         validateMap(new StreamSource( getClass().getResourceAsStream(mapFilePath) ));
         mapList = getMaps(new InputSource( getClass().getResourceAsStream(mapFilePath)));

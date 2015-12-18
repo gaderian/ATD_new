@@ -6,9 +6,14 @@ import org.xml.sax.SAXException;
 import GUI.CLayout;
 import GUI.MapInformation;
 import GUI.UserInformation;
+
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import modell.tile.Tile;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
@@ -16,7 +21,7 @@ import java.util.TimerTask;
 
 /**
  * Class:       controller.MainController
- *
+ * <p>
  * Author:      Erik Moström
  * cs-user:     dv14emm
  * Date:        12/15/15
@@ -33,10 +38,26 @@ public class MainController implements MapInformation, UserInformation {
     private CurrentGraphicState graphicState;
     private Map map;
 
-    public MainController(){
+    /**
+     * Creates a new instance of the game.
+     */
+    public MainController() {
         createFactory();
         gui = new CLayout(this, this);
-        int dimension = gui.getTileSize()*12;
+        int dimension = gui.getTileSize() * 12;
+        renderer = new Renderer(dimension, dimension);
+        game = null;
+    }
+
+    /**
+     * Creates a new instance of the game.
+     *
+     * @param mapFile path to a file containing maps
+     */
+    public MainController(String mapFile) {
+        createFactory(mapFile);
+        gui = new CLayout(this, this);
+        int dimension = gui.getTileSize() * 12;
         renderer = new Renderer(dimension, dimension);
         game = null;
     }
@@ -53,22 +74,23 @@ public class MainController implements MapInformation, UserInformation {
 
     /**
      * Starts the game with an specified update interval
+     *
      * @param interval the update interval in milliseconds
      */
-    public void startWithUpdateInterval(long interval){
+    public void startWithUpdateInterval(long interval) {
         timer = new Timer();
         timer.schedule(new Task(this), interval, interval);
     }
 
     /**
-     * Starts the game with an update interval of 1/10 of a second
+     * Starts the game with an update interval of 1/500 of a second
      */
-    public void start(){
+    public void start() {
         startWithUpdateInterval(2);
     }
 
     /**
-     * Creates a factory containing all the maps.
+     * Creates a factory containing all the standard maps.
      */
     private void createFactory() {
         try {
@@ -82,11 +104,35 @@ public class MainController implements MapInformation, UserInformation {
     }
 
     /**
-     * This is
-     * @param args
+     * Creates a factory containing all the maps in the specified file.
+     *
+     * @param mapFile the path to the file containing the maps
+     */
+    private void createFactory(String mapFile) {
+        try {
+            factory = new MapFactory( new File(mapFile).toURI().toURL());
+        } catch (FileNotFoundException e){
+            System.err.println("File not found, check that the path is correct");
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            //TODO exception handling
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This is the main method starting the game.
+     *
+     * @param args the arguments passed to the program on startup
      */
     public static void main(String[] args) {
-        MainController c = new MainController();
+        if (args.length > 0) {
+            new MainController(args[0]);
+        }else{
+            new MainController();
+        }
     }
 
     @Override
@@ -168,7 +214,7 @@ public class MainController implements MapInformation, UserInformation {
 
     @Override
     public void hasClicked(int x, int y) {
-        game.clickAtPos(new Position(x,y));
+        game.clickAtPos(new Position(x, y));
     }
 
     /**
@@ -178,7 +224,7 @@ public class MainController implements MapInformation, UserInformation {
     private class Task extends TimerTask {
         private MainController controller;
 
-        public Task(MainController c){
+        public Task(MainController c) {
             controller = c;
         }
 
