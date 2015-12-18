@@ -1,13 +1,16 @@
 package GUI;
 
 import javax.swing.*;
+
 import modell.HighscoreDB;
+
 import java.awt.*;
 import java.util.ArrayList;
+
 /**
  * Class HighScoreGUI
- * Builds the main.GUI for the highscore panel
- *
+ * Builds the GUI for the highscore panel. This calls the HighscoreDB class to retrieve the info from the database
+ * <p>
  * Created by Joakim on 2015-12-02.
  */
 public class HighScoreGUI {
@@ -29,18 +32,15 @@ public class HighScoreGUI {
     ArrayList<String> highscores = new ArrayList<>();
     private CLayout c;
     HighscoreDB dbs = new HighscoreDB();
-
-    public HighScoreGUI(CLayout c){
+    public HighScoreGUI(CLayout c) {
         this.c = c;
     }
     JLabel label = new JLabel();
 
-
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
-        JLabel picLabel = new JLabel(new ImageIcon( getClass().getResource("loggo.png") ));
+        JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("loggo.png")));
         upperPanel.add(picLabel);
-
         upperPanel.setOpaque(false);
 
         return upperPanel;
@@ -49,28 +49,10 @@ public class HighScoreGUI {
     private JPanel buildMiddelPanel() {
         JPanel middelPanel = new JPanel();
         middelPanel.setBackground(new Color(56, 134, 96));
-
-
-        //lowerPanel.setLayout(new BorderLayout());
-
-/*
-        scrollPane.setOpaque(false);
-        scrollPane.getViewport().setOpaque(false);
-        scrollPane.setBorder(null);
-        scrollPane.setViewportBorder(null);
-
-        textArea.setEditable(false);
-        textArea.setBorder(null);
-        textArea.setBackground(new Color(0, 0, 0, 155));
-        */
-
         updateHighscores();
-
         label.setFont(new Font("Arial", Font.PLAIN, 25));
         label.setForeground(Color.white);
-
         middelPanel.add(label);
-
 
         return middelPanel;
     }
@@ -79,22 +61,19 @@ public class HighScoreGUI {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         lowerPanel.setBackground(new Color(56, 134, 96));
-
         JPanel soundPanel = new JPanel();
         soundPanel.setBackground(new Color(56, 134, 96));
-
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(new Color(56, 134, 96));
 
-
-        sound = new JButton(new ImageIcon( getClass().getResource("sound.png") ));
+        sound = new JButton(new ImageIcon(getClass().getResource("sound.png")));
         sound.addMouseListener(new SoundListener(sound, c));
         sound.setBorderPainted(false);
         sound.setContentAreaFilled(false);
         sound.setFocusPainted(false);
         soundPanel.add(sound);
 
-        back = new JButton(new ImageIcon( getClass().getResource("backButton.png") ));
+        back = new JButton(new ImageIcon(getClass().getResource("backButton.png")));
         back.addMouseListener(new BackListener(back, c));
         back.setLayout(new FlowLayout(FlowLayout.LEFT));
         back.setBorderPainted(false);
@@ -102,14 +81,13 @@ public class HighScoreGUI {
         back.setFocusPainted(false);
         buttonPanel.add(back);
 
-
         lowerPanel.add(buttonPanel, BorderLayout.WEST);
         lowerPanel.add(soundPanel, BorderLayout.SOUTH);
 
         return lowerPanel;
     }
+
     /**
-     *
      * @return The highscore main.GUI as a JPanel
      */
     public JPanel getPanel() {
@@ -129,10 +107,13 @@ public class HighScoreGUI {
         return panel;
     }
 
+    /**
+     * Updates the current highscore-list on the GUI
+     */
     public void updateHighscores() {
         label.setText("");
         highscores = dbs.getData();
-        highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
+        highscores.forEach((temp) -> label.setText("<html>" + label.getText() + "\t\t\t" + "<br>" + temp + "<html>"));
 
     }
 

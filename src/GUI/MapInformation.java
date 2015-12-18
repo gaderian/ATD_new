@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * Interface which is used by the GUI classes to retrieve information from the model
+ *
  * Created by Joakim on 2015-12-09.
  */
 public interface MapInformation {
 
-    public ArrayList<String> getLevelNames();
+    ArrayList<String> getLevelNames();
 
-    public HashMap<Position, Tile> getMap(String s);
+    HashMap<Position, Tile> getMap(String s);
 }
