@@ -1,5 +1,5 @@
 package modell.tile;/*
- * main.java.main.tile.main.tile.End
+ * End
  * 
  * Date 29/11- 2015
  * @author id12jwn
@@ -7,28 +7,38 @@ package modell.tile;/*
 
 
 import modell.Position;
-import java.net.MalformedURLException;
 import modell.unit.Unit;
 
+import java.net.MalformedURLException;
+
 /**
- * main.java.main.tile.main.tile.End is a class that extends the main.java.main.tile.main.tile.PathTile class. The class
+ * End is a class that extends the PathTile class. The class
  * have a own image that will be used in the user interface.
  */
 public class End extends PathTile {
 
-
     /**
-     * Todo
-     * main.java.main.tile.main.tile.End is the constructor that will read in the image when
-     * the program will create a object of the class main.java.main.tile.main.tile.Default
+     * End is a constructor that will set the postion and the
+     * image that will be useed in the GUI
+     *
+     * @param p, The position of the tile
+     * @throws MalformedURLException
      */
     public End(Position p) throws MalformedURLException {
         super(p, "pathTile.png");
     }
 
+    /**
+     * Is not doing any thing.
+     * @param posToSend, The posistion that the unit will be send to
+     */
     @Override
     public void sendToPos(Position posToSend) {}
 
+    /**
+     * landOn will set that the unit has reach the goal
+     * @param unit
+     */
     @Override
     public void landOn(Unit unit) {
         unit.setHasReachedGoal(true);

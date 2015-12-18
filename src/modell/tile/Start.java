@@ -1,5 +1,5 @@
 package modell.tile;/*
- * main.java.main.tile.main.tile.Start
+ * Start
  * 
  * Date 29/11- 2015
  * @author id12jwn
@@ -7,29 +7,40 @@ package modell.tile;/*
 
 
 import modell.Position;
-import java.net.MalformedURLException;
 import modell.unit.Unit;
 
+import java.net.MalformedURLException;
+
 /**
- * main.java.main.tile.main.tile.Start is a class that extends the main.java.main.tile.main.tile.PathTile class. The class
+ * Start is a class that extends the PathTile class. The class
  * have a own image that will be used in the user interface.
  */
 public class Start extends PathTile {
 
     private Position nextPos;
     /**
-     * main.java.main.tile.main.tile.Start is the constructor that will read in the image when
-     * the program will create a object of the class main.java.main.tile.main.tile.Default
+     * Start is the constructor that will send it's position to the
+     * class PathTile, and also its image Path
      */
     public Start(Position p) throws MalformedURLException {
         super(p, "pathTile.png");
     }
 
+    /**
+     * landOn will set the next position to the tile it will go to
+     * @param unit, the unit that steps on the tile
+     */
     @Override
     public void landOn(Unit unit) {
         unit.setNextTilePos(nextPos);
-
     }
+
+    /**
+     * sendToPos will set the positon that the tile will send the
+     * units to.
+     *
+     * @param posToSend, The positon that the unit will be send to
+     */
     @Override
     public void sendToPos(Position posToSend) {
         nextPos = posToSend;
