@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public abstract class Tile {
+public class Tile {
 
     private URL path;
     private BufferedImage img = null;
@@ -25,7 +25,7 @@ public abstract class Tile {
      * @param p, the position of the tile
      * @param imgPath, the path to witch image the tile have
      */
-    protected Tile(Position p, String imgPath) throws MalformedURLException {
+    public Tile(Position p, String imgPath) throws MalformedURLException {
 	    pos = p;
 	    path = getClass().getResource(imgPath);
     }
