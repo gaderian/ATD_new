@@ -11,9 +11,9 @@ import modell.unit.Unit;
 import java.net.MalformedURLException;
 
 /**
- * Telepoter is a class that extends the 
- * main.java.main.tile.main.tile.PathTile class. The class have a own
- * image that will be used in the user interface. 
+ * Telepoter is a class that extends the PathTile class.
+ * The class have a own image that will be used in the user
+ * interface.
  *
  */
 public class Teleporter extends PathTile {
