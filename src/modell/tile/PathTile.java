@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 
 /**
  * PathTile is a abstract class that will define what type of tile that
- * is created
+ * is created.
  */
 public abstract class PathTile extends Tile implements TileAction {
 
