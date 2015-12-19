@@ -2,12 +2,15 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-
-/**
- * Created by juliawestman on 2015-12-15.
+/* Start
+ *
+ * Date 29/11- 2015
+ * @author id12jwn
  */
+
 public class AboutGUI extends JPanel {
 
+    // create the variable that will be useed
     private CLayout c;
     private JButton sound;
     private JButton back;
@@ -20,30 +23,57 @@ public class AboutGUI extends JPanel {
     private JLabel middelLabel2 = new JLabel();
     private JLabel middelLabel3 = new JLabel();
     private JLabel middelLabel4 = new JLabel();
-    private JLabel middelLabel5 = new JLabel();
 
     public AboutGUI(CLayout c) {
         this.c = c;
     }
 
+    /**
+     * bulidUpperPanel is a method that will build the upperPanel that will
+     * be used in the about screen
+     *
+     * @return, return the upperPanel
+     */
     private JPanel buildUpperPanel() {
+
         JPanel upperPanel = new JPanel();
 
-        //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
-        JLabel picLabel = new JLabel(new ImageIcon( getClass().getResource("loggo.png") ));
-        upperPanel.add(picLabel);
+        // create a image of the games loggo
+        JLabel picLabel = new JLabel(new ImageIcon( getClass().
+                getResource("loggo.png") ));
 
+        // adding the loggo to the panel
+        upperPanel.add(picLabel);
         upperPanel.setOpaque(false);
 
         return upperPanel;
     }
+
+    /**
+     * bulidMiddelPanel is a method that will build the middelPanel
+     * that will be used in the about screen. The panel is sepeated
+     * in tree other panels
+     *
+     * @return the middelPanel
+     */
     private JPanel buildMiddlePanel() {
+
+        // crates and the middelPanel
         JPanel middlePanel = new JPanel();
+
+        // sets a boxlayout on the panel
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
+
+        // give the panel a background
         middlePanel.setBackground(new Color(56, 134, 96));
 
+        // crates a new panel tha will be in the middelpanel
         JPanel overPanel = new JPanel();
+
+        // setting the size of the panel
         overPanel.setPreferredSize(new Dimension(400, 30));
+
+
         overPanel.setBackground(new Color(56, 134, 96));
 
         JPanel underPanel = new JPanel();
