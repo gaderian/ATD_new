@@ -1,34 +1,30 @@
 package GUI;
 
 import javax.swing.*;
+
 import modell.HighscoreDB;
+
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 
 /**
  * Class: CLayout
- * This class builds the main.GUI for the game. This main.GUI is of type CardLayout in which this class i able to switch between
+ * This class builds the main.GUI for the game. This main.GUI is of type CardLayout in which this class i able to
+ * switch between
  * different cards after it built them.
- *
+ * <p>
  * Created by Zacke on 2015-12-01.
  */
 public class CLayout {
 
     private JFrame frame = new JFrame("Anti Tower Defence");
-
     private JPanel panelCont = new JPanel();
-    //JPanel gamePanel = new JPanel();
-    //JPanel menuCard, newGameCard, highScoreCard, endGameCard;
-
-     MusicPlayer music = new MusicPlayer();
-
+    public MusicPlayer music = new MusicPlayer();
     private CardLayout cl = new CardLayout();
-
     public MapInformation mapinfo;
     public UserInformation userinfo;
     public String userName;
-
     public GameGUI game;
     private MenuGUI menu;
     private NewGameGUI newGame;
@@ -37,14 +33,17 @@ public class CLayout {
     private AboutGUI about;
     private HelpGUI help;
 
-
-
+    /**
+     * Builds all the panels which is used by the card layout and saves them in a panel container
+     *
+     * @param mapinfo  Interface which implements methods about the map
+     * @param userinfo Interface which implements methods about the user and units
+     */
     public CLayout(MapInformation mapinfo, UserInformation userinfo) {
         this.mapinfo = mapinfo;
         this.userinfo = userinfo;
 
         music.play("defaultMusic.wav");
-
         panelCont.setLayout(cl);
 
         menu = new MenuGUI(this);
@@ -63,7 +62,6 @@ public class CLayout {
         panelCont.add(about.getPanel(), "about");
         panelCont.add(help.getPanel(), "help");
 
-
         cl.show(panelCont, "menu");
 
         frame.add(panelCont);
@@ -72,22 +70,6 @@ public class CLayout {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-
-
-
-        //MenuGUI gui = new MenuGUI();
-        //gui.show();
-
-        /*
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new CLayout();
-
-            }
-        });
-
-        */
 
     }
 
@@ -134,7 +116,7 @@ public class CLayout {
         userName = JOptionPane.showInputDialog(popup,
                 "Enter username:", null);
 
-        if(userName != null) {
+        if (userName != null) {
             userinfo.updateUsername(userName);
             HighscoreDB db = new HighscoreDB(userinfo.getUser());
             db.addUser(game.chosenMap);
@@ -165,7 +147,7 @@ public class CLayout {
 
     /**
      * @return The size of a main.tile in the game board
-     *
+     * <p>
      * TODO Hårdkoda inte detta!
      */
     public int getTileSize() {

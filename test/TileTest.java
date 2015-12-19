@@ -4,7 +4,7 @@ import modell.Position;
 
 
 /**
- * main.java.main.tile.TileTest is a TestClass that will test that the different
+ * java.tile.TileTest is a TestClass that will test that the different
  * TileClasses is working as it should. 
  */
 public class TileTest {

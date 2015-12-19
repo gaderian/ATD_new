@@ -1,5 +1,5 @@
 /**
- * Class:       main.tower
+ * Class:       tower
  *
  * Author:      Erik Moström
  * cs-user:     dv14emm
@@ -31,14 +31,14 @@ public abstract class Tower {
     protected int id;
 
     /**
-     * Constructor of a main.tower class
+     * Creates a instance of a Tower
      *
-     * @param range the range of the main.tower
-     * @param speed the firing frequency of the main.tower
-     * @param damage the damage dealt to a main.unit hit by the main.tower
-     * @param air if the main.tower can shoot at flying units
-     * @param ground if the main.tower can shoot at ground units
-     * @param pos the position of the main.tower
+     * @param range the range of the tower
+     * @param speed the firing frequency of the tower
+     * @param damage the damage dealt to a unit hit by the tower
+     * @param air if the tower can shoot at flying units
+     * @param ground if the tower can shoot at ground units
+     * @param pos the position of the tower
      */
     protected Tower(int range, int speed, int damage, boolean air,
                     boolean ground, Position pos){
@@ -55,12 +55,12 @@ public abstract class Tower {
     }
 
     /**
-     * Determines if a main.unit is within range of the main.tower. A main.unit is considered
-     * to be out of range if it is flying and the main.tower can only shoot at ground
+     * Determines if a unit is within range of the tower. A unit is considered
+     * to be out of range if it is flying and the tower can only shoot at ground
      * units.
      *
-     * @param newTarget the main.unit to check if within range.
-     * @return true if the main.unit is within range, else false.
+     * @param newTarget the unit to check if within range.
+     * @return true if the unit is within range, else false.
      */
     public boolean withinRange(Unit newTarget){
         if(newTarget.isFlying() && !air){
@@ -73,7 +73,7 @@ public abstract class Tower {
     }
 
     /**
-     * Sets a new target for this main.tower to shoot at
+     * Sets a new target for this tower to shoot at
      *
      * @param newTarget the new target
      */
@@ -83,6 +83,11 @@ public abstract class Tower {
 
     /**
      * Will deal the towers damage to the towers current target.
+     *
+     * @param time the time of the game given in the number of update cycles
+     *             performed by the game.
+     * @return a GraphicEvent representing a laser from the tower to the
+     * targeted unit
      */
     public GraphicEvent attack(int time) {
         if(time - timeOfLastAttack >= speed){
@@ -119,7 +124,7 @@ public abstract class Tower {
     /**
      * Creates a buffered image representing a laser
      *
-     * @return a buffered image
+     * @return a buffered image containing a red line representing a laser.
      */
     private BufferedImage createLaserImage() {
         Position towerPos = this.getPosition();
@@ -137,7 +142,7 @@ public abstract class Tower {
             height = height * -1;
         }
 
-        /*Calculate the coordinates for the lasers start and end point*/
+        /*Calculate the coordinates for the lasers start and end points*/
         int x, dx, y, dy;
 
         if (towerPos.getX() >= targetPos.getX()){
@@ -166,18 +171,22 @@ public abstract class Tower {
         return laser;
     }
 
+    /**
+     * Will load the image of the tower from disc and save it for later use.
+     *
+     * @param path an URL to the image to be loaded
+     */
     protected void loadImage(URL path){
         try {
             image = ImageIO.read(path);
         } catch (IOException e) {
-            //TODO exception handling
             e.printStackTrace();
         }
     }
 
     /**
      * Will check if the towers current target is valid. If the target is dead
-     * or out of range the target is invalid since the main.tower cannot shoot at it.
+     * or out of range the target is invalid since the tower cannot shoot at it.
      *
      * @return true if current target is valid, else false.
      */
@@ -189,14 +198,19 @@ public abstract class Tower {
     }
 
     /**
-     * Returns the position of the main.tower.
+     * Returns the position of the tower.
      *
-     * @return the position of the main.tower.
+     * @return the position of the tower.
      */
     public Position getPosition() {
         return pos;
     }
 
+    /**
+     * Will generate a GraphicEvent with the image of the tower.
+     *
+     * @return a GraphicEvent with the towers position and image.
+     */
     public GraphicEvent generateGraphicEvent() {
 
         return (new GraphicEvent(this.id, this.pos, image));

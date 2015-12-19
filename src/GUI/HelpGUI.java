@@ -59,7 +59,7 @@ public class HelpGUI extends JPanel {
         overPanel.add(overLabel, BorderLayout.CENTER);
 
         middelLabel1.setPreferredSize(new Dimension(500,25));
-        middelLabel1.setText("Select and buy you'r main.unit's. Try to stay alive to the");
+        middelLabel1.setText("Select and buy you'r unit's. Try to stay alive to the");
         middelLabel1.setFont(new Font("Copperplate", Font.PLAIN, 18));
         middelLabel1.setForeground(Color.white);
         underPanel.add(middelLabel1, BorderLayout.NORTH);

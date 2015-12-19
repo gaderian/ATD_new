@@ -21,7 +21,7 @@ import java.util.TimerTask;
 
 /**
  * Class:       controller.MainController
- * <p>
+ *
  * Author:      Erik Moström
  * cs-user:     dv14emm
  * Date:        12/15/15

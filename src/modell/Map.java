@@ -24,6 +24,9 @@ public class Map {
     private int winScore;
     private int startingGold;
 
+    /**
+     * Creates a instance of Map, should only be accessed by a MapFactory
+     */
     protected Map(){
         pathTiles = new HashMap<>();
         towerTiles = new HashMap<>();
@@ -31,8 +34,8 @@ public class Map {
     }
 
     /**
-     * Adds a main.tile to the map.
-     * @param t TODO
+     * Adds a tile to the map, should only be called by a MapFactory.
+     * @param t the tile to add
      */
     protected void addTile(Tile t){
         if (PathTile.class.isAssignableFrom(t.getClass())) {
@@ -47,7 +50,7 @@ public class Map {
     }
 
     /**
-     * Returns the main.tile at a specified position if there is any.
+     * Returns the tile at a specified position if there is any.
      *
      * @param p the Position which to check.
      * @return the Tile of the position
@@ -161,33 +164,58 @@ public class Map {
         this.startingGold = startingGold;
     }
 
+    /**
+     * Returns all TowerTiles of this map
+     *
+     * @return a Collection containing all the tower tiles
+     */
     public Collection<Tile> getTowerTiles(){
         return towerTiles.values();
     }
 
+    /**
+     * Returns the entire map with all tiles added to the map.
+     *
+     * @return a HashMap containing all the tiles of the map
+     */
     public HashMap<Position, Tile> getCompleteMap() {
         return completeMap;
     }
 
+    /**
+     * Returns the Tile of the map specified as the starting tile.
+     *
+     * @return the start tile of the map
+     */
     public Tile getStartTile() {
         return startTile;
     }
 
+    /**
+     * A swap can only be made if the new Tile has the same position as another
+     * already in the map. When swapping a tile the new will have some basic
+     * information added to it from the old, if they are of the same type.
+     *
+     * @param t the tile to swap with one already in the map
+     */
     public void swapTile(Tile t){
         Position tilePos = t.getPosition();
         Tile oldTile = getTileAt(tilePos);
 
+        /*end if there are no old tile*/
         if (oldTile == null){
             return;
         }
 
+        /* If both of the tiles are path tiles, give the new tile the position
+         * where it should send units to */
         if(PathTile.class.isAssignableFrom(t.getClass()) &&
                 PathTile.class.isAssignableFrom(oldTile.getClass())){
 
             PathTile path = (PathTile) t;
-            PathTile oldpath = (PathTile) oldTile;
+            PathTile oldPath = (PathTile) oldTile;
 
-            path.sendToPos(oldpath.getNextPos());
+            path.sendToPos(oldPath.getNextPos());
 
             pathTiles.remove(tilePos);
             pathTiles.put(tilePos, t);

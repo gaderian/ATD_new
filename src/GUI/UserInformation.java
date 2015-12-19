@@ -3,6 +3,8 @@ package GUI;
 import modell.User;
 
 /**
+ * Interface which has methods for retrieving info from a user or units from the model
+ * <p>
  * Created by id12jzn on 2015-12-15.
  */
 public interface UserInformation {
@@ -28,5 +30,4 @@ public interface UserInformation {
     void resumeGame();
 
     void hasClicked(int x, int y);
-
 }
