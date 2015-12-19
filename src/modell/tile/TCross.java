@@ -1,17 +1,17 @@
 package modell.tile;/*
- * main.java.main.tile.main.tile.TCross
+ * TCross
  * 
  * Date 27/11- 2015
  * @author id12jwn
  */
 
-import java.net.MalformedURLException;
-
 import modell.Position;
 import modell.unit.Unit;
 
+import java.net.MalformedURLException;
+
 /**
- * main.java.main.tile.main.tile.TCross a class that extends the main.java.main.tile.main.tile.PathTile class. The class
+ * TCross a class that extends the class PathTile class. The class
  * have a own image that will be used in the user interface.   
  */
 public class TCross extends PathTile {
@@ -21,13 +21,18 @@ public class TCross extends PathTile {
     private String TCrossImg;
 
     /**
-     * main.java.main.tile.main.tile.TCross is the constructor that will read in the image when
-     * the program will create a object of the class main.java.main.tile.main.tile.Default
+     * TCross is the constructor that will read in the image when
+     * the program will create a object
      */
     public TCross(Position p) throws MalformedURLException {
         super(p, "TCross.png");
     }
 
+    /**
+     * setPositions is a method that will set the positions that
+     * the user can chose between to send the units to
+     * @param posToSet
+     */
     public void setPosistions(Position posToSet){
         if(defaultNextPos==null){
             defaultNextPos = posToSet;
@@ -36,6 +41,11 @@ public class TCross extends PathTile {
         }
     }
 
+    /**
+     * getTCrossImg is a method that will check were the user
+     * wants to send theirs units to
+     * @return, the imgage with the right arrow
+     */
     private String getTCrossImg(){
         Position nextPos = getNextPos();
         Position pos = getPosition();
@@ -52,7 +62,10 @@ public class TCross extends PathTile {
     }
 
 
-    //
+    /**
+     * changeDriecion is a method that will change the units
+     * direction when the user choose a diffrent way
+     */
     public void changeDirection(){
 
         if (defaultNextPos.equals(getNextPos())) {
@@ -66,6 +79,12 @@ public class TCross extends PathTile {
         changeImgURL(temp);
     }
 
+    /**
+     * sendToPos will set the next psotion that the method landOn
+     * will send the units to
+     *
+     * @param posToSend, The posistion that the unit will be send to
+     */
     @Override
     public void sendToPos(Position posToSend) {
         setPosistions(posToSend);
@@ -73,7 +92,9 @@ public class TCross extends PathTile {
     }
 
     /**
-     *
+     * landOn is a method that will set the next position that the
+     * unit will go to, depending on the path that the user will
+     * choose.
      */
     @Override
     public void landOn(Unit unit) {

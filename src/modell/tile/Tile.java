@@ -1,61 +1,50 @@
 package modell.tile;
 /*
- * main.java.main.tile.main.tile
+ * Tile
  * 
  * Date 1/12- 2015
  * @author id12jwn
  */
 
 import modell.Position;
+
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * main.java.main.tile.main.tile is a class is a abctact class...
- */
 public abstract class Tile {
 
     private URL path;
-    //private String path;
     private BufferedImage img = null;
     private Position pos;
 
     /**
-     * main.tile is the constructor that will set the values...
-     * @param p
-     * @param imgPath
+     * Tile is the constructor that will set the positon of the tile and
+     * the image path that is different for all types of tiles.
+     *
+     * @param p, the position of the tile
+     * @param imgPath, the path to witch image the tile have
      */
     protected Tile(Position p, String imgPath) throws MalformedURLException {
 	    pos = p;
 	    path = getClass().getResource(imgPath);
-        readInImg();
     }
 
     /**
+     * changeImgRL is a method that will change the img depending on the url
+     * it takes in.
      *
-     * @param url
+     * @param url, the url to the image
      */
     public void changeImgURL(String url){
         path = getClass().getResource(url);
     }
 
-    //
+
     /**
-     * readInImg will read in the img that is given of the path
+     * getImageURL is a method that gets the URL of the image
+     * @return URL of the image
      */
-    public void readInImg(){
-	/*try {
-	    File file = new File(path);
-	    img = ImageIO.read(file);
-
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}*/
-    }
-
-    /*added by Erik M*/
     public URL getImageURL(){
         return path;
     }
