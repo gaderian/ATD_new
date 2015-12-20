@@ -4,38 +4,68 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**
- * Created by juliawestman on 2015-12-17.
+/* BackToGameMenuListener
+ *
+ * Date 17/12- 2015
+ * @author id12jwn
  */
+
 public class BackToGameMenuListener implements MouseListener{
         private JButton button;
         private CLayout c;
 
-        public BackToGameMenuListener(JButton button, CLayout c) {
+    /**
+     * BackToGameMenuListener is a constructor that will sett the
+     * parameters button anc Clayout
+     *
+     * @param button, The button it listen to
+     * @param c, The clayout class
+     */
+    public BackToGameMenuListener(JButton button, CLayout c) {
 
-            this.button = button;
-            this.c = c;
-        }
+        this.button = button;
+        this.c = c;
+    }
 
-        public void mouseClicked(MouseEvent e) {
-            c.showCard("newGame");
+    /**
+     * When a user click on the button it will show the card
+     * newGame
+     * @param e, a event
+     */
+    public void mouseClicked(MouseEvent e) {
+        c.showCard("newGame");
 
-        }
+    }
 
-        public void mousePressed(MouseEvent e) {
-        }
+    /**
+     * The method needs to be there
+     * @param e
+     */
+    public void mousePressed(MouseEvent e) {
+    }
 
-        public void mouseReleased(MouseEvent e) {
-        }
+    /**
+     * The method needs to be there
+     * @param e
+     */
+    public void mouseReleased(MouseEvent e) {
+    }
 
-        public void mouseEntered(MouseEvent e) {
-            button.setIcon(new ImageIcon( getClass().getResource("backHover.png") ));
-        }
+    /**
+     * The method mouseEnterd will change the image
+     * @param e, a event
+     */
+    public void mouseEntered(MouseEvent e) {
+        button.setIcon(new ImageIcon( getClass().getResource("backHover.png") ));
+    }
 
-        public void mouseExited(MouseEvent e) {
-            button.setIcon(new ImageIcon( getClass().getResource("backButton.png") ));
+    /**
+     * The method mouseEnterd will change the image
+     * @param e, a event
+     */
+    public void mouseExited(MouseEvent e) {
+        button.setIcon(new ImageIcon( getClass().getResource("backButton.png") ));
 
-        }
-
+    }
 
 }
