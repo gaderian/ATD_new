@@ -45,6 +45,11 @@ public class Tile {
      */
     public void changeImgURL(String url){
         path = getClass().getResource(url);
+        try {
+            img = ImageIO.read(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
