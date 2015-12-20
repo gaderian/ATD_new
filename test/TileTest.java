@@ -21,7 +21,7 @@ public class TileTest {
         Position nextPos1 = new Position(0,1);
         Position nextPos2 = new Position(1,0);
 
-        String imgPath = "default.png";
+        String imgPath = "pathTile.png";
 
         Tile t = null;
         try {
@@ -98,6 +98,5 @@ public class TileTest {
         Position nextP = tCross.getNextPos();
         assertNotNull(nextP);
     }
-
 
 }
