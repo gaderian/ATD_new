@@ -21,14 +21,16 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+
 import modell.tile.PathTile;
 import modell.tile.Tile;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
  * Class:       TileMap
- *
+ * <p>
  * Author:      Erik Moström
  * cs-user:     dv14emm
  * Date:        2015-12-01
@@ -47,13 +49,15 @@ public class MapFactory {
      * constructor is for when the map file is within the project structure.
      *
      * @param mapFile the name of the file containing the maps.
-     * @throws IOException when something goes wrong reading the map/schema file
+     * @throws IOException  when something goes wrong reading the map/schema
+     *                      file
      * @throws SAXException when something goes wrong when parsing either of the
-     * files
+     *                      files
      */
     public MapFactory(String mapFile) throws IOException, SAXException {
-        validateMap(new StreamSource( getClass().getResourceAsStream(mapFile) ));
-        mapList = getMaps(new InputSource( getClass().getResourceAsStream(mapFile)));
+        validateMap(new StreamSource(getClass().getResourceAsStream(mapFile)));
+        mapList = getMaps(
+                new InputSource(getClass().getResourceAsStream(mapFile)));
         mapNames = collectMapNames();
         tileTypes = new Hashtable<>();
     }
@@ -64,13 +68,14 @@ public class MapFactory {
      * constructor is for when the map file is outside of the compiled jar-file.
      *
      * @param mapFilePath a URL to the file containing the maps
-     * @throws IOException when something goes wrong reading the map/schema file
+     * @throws IOException  when something goes wrong reading the map/schema
+     *                      file
      * @throws SAXException when something goes wrong when parsing either of the
-     * files
+     *                      files
      */
     public MapFactory(URL mapFilePath) throws IOException, SAXException {
-        validateMap(new StreamSource( mapFilePath.openStream() ));
-        mapList = getMaps(new InputSource( mapFilePath.openStream() ));
+        validateMap(new StreamSource(mapFilePath.openStream()));
+        mapList = getMaps(new InputSource(mapFilePath.openStream()));
         mapNames = collectMapNames();
         tileTypes = new Hashtable<>();
     }
@@ -85,7 +90,8 @@ public class MapFactory {
      */
     private NodeList getMaps(InputSource maps) throws IOException {
         try {
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory dbFactory =
+                    DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(maps);
             Element data = doc.getDocumentElement();
@@ -103,7 +109,7 @@ public class MapFactory {
      *
      * @return an ArrayList containing all the map names
      */
-    private ArrayList<String> collectMapNames(){
+    private ArrayList<String> collectMapNames() {
         ArrayList list = new ArrayList<>();
         for (int i = 0; i < mapList.getLength(); i++) {
             Node node = mapList.item(i);
@@ -190,7 +196,7 @@ public class MapFactory {
      * @param node a Node containing the tiles information
      * @return a finished tile.
      * @throws WrongClassTypeException when the class specified to be used as a
-     * tile doesn't extend the Tile class
+     *                                 tile doesn't extend the Tile class
      */
     private Tile constructTile(Node node) throws WrongClassTypeException {
         Node tileTypeNode = node.getAttributes().getNamedItem("tileType");
@@ -205,9 +211,10 @@ public class MapFactory {
         }
 
         /*Get the position of the tile*/
-        NodeList positionList = ((Element)node).getElementsByTagName("sendToPos");
+        NodeList positionList =
+                ((Element) node).getElementsByTagName("sendToPos");
 
-        Node tilePos = ((Element)node).getElementsByTagName("tilePos").item(0);
+        Node tilePos = ((Element) node).getElementsByTagName("tilePos").item(0);
         Position p = extractPosition(tilePos);
 
         Tile tile = null;
@@ -228,7 +235,6 @@ public class MapFactory {
                 }
             }
         } catch (InstantiationException e) {
-            //TODO exception handling
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -248,8 +254,10 @@ public class MapFactory {
      * @return an instance of Position.
      */
     private Position extractPosition(Node pos) {
-        int x = Integer.parseInt(pos.getAttributes().getNamedItem("column").getNodeValue())-1;
-        int y = Integer.parseInt(pos.getAttributes().getNamedItem("row").getNodeValue())-1;
+        int x = Integer.parseInt(pos.getAttributes().getNamedItem("column").
+                getNodeValue()) - 1;
+        int y = Integer.parseInt(pos.getAttributes().getNamedItem("row").
+                getNodeValue()) - 1;
         return new Position(x, y);
     }
 
@@ -260,7 +268,7 @@ public class MapFactory {
      * @return the Class with the specified name.
      * @throws WrongClassTypeException when the class doesn't extend Tile
      */
-    private Class<?> readClass(String className) throws WrongClassTypeException {
+    private Class<?> readClass(String className) throws WrongClassTypeException{
         Class c = null;
 
         try {
@@ -270,7 +278,6 @@ public class MapFactory {
 
             c = ucl.loadClass(className);
         } catch (ClassNotFoundException e) {
-            //TODO exception handling
             e.printStackTrace();
         }
 
@@ -290,7 +297,9 @@ public class MapFactory {
      * @param map the path to the map.
      * @return true if the map is valid, else false.
      */
-    private boolean validateMap(StreamSource map) throws IOException, SAXException {
+    private boolean validateMap(StreamSource map)
+            throws IOException, SAXException {
+
         String schemaPath = "mapTemplate.xsd";
 
         String schemaLang = "http://www.w3.org/2001/XMLSchema";

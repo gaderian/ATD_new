@@ -95,11 +95,9 @@ public class MainController implements MapInformation, UserInformation {
     private void createFactory() {
         try {
             factory = new MapFactory("levels.xml");
-        } catch (IOException e) {
+        } catch (IOException | SAXException e) {
             e.printStackTrace();
-        } catch (SAXException e) {
-            //TODO exception handling
-            e.printStackTrace();
+            System.exit(0);
         }
     }
 
@@ -110,15 +108,13 @@ public class MainController implements MapInformation, UserInformation {
      */
     private void createFactory(String mapFile) {
         try {
-            factory = new MapFactory( new File(mapFile).toURI().toURL());
-        } catch (FileNotFoundException e){
-            System.err.println("File not found, check that the path is correct");
+            factory = new MapFactory(new File(mapFile).toURI().toURL());
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found, check if the path is correct.");
             System.exit(0);
-        } catch (IOException e) {
+        } catch (IOException | SAXException e) {
             e.printStackTrace();
-        } catch (SAXException e) {
-            //TODO exception handling
-            e.printStackTrace();
+            System.exit(0);
         }
     }
 
@@ -130,7 +126,7 @@ public class MainController implements MapInformation, UserInformation {
     public static void main(String[] args) {
         if (args.length > 0) {
             new MainController(args[0]);
-        }else{
+        } else {
             new MainController();
         }
     }

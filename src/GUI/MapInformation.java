@@ -12,6 +12,7 @@ import java.util.HashMap;
  */
 public interface MapInformation {
 
+
     ArrayList<String> getLevelNames();
 
     HashMap<Position, Tile> getMap(String s);
