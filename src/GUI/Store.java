@@ -7,7 +7,7 @@ import java.net.URL;
 /**
  * Builds the GUI for the store buttons
  * <p>
- * Created by Zacke on 2015-12-08.
+ * Created by id12jzn on 2015-12-08.
  */
 public class Store {
     private int shopWidth = 3;
@@ -39,7 +39,7 @@ public class Store {
      * Draws images on the store components, which is then used as buttons via a listener
      * Also adds a small text above each icon how much a unit costs
      *
-     * @param g
+     * @param g graphic to draw
      */
     public void draw(Graphics g) {
         for (int i = 0; i < button.length; i++) {

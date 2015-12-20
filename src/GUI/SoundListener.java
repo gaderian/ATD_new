@@ -19,6 +19,11 @@ class SoundListener implements MouseListener {
         this.c = c;
     }
 
+    /**
+     * Plays or pauses the background music depending on which is toggled at the momemt
+     *
+     * @param e mouse event
+     */
     public void mouseClicked(MouseEvent e) {
         if (button.getIcon().toString().contains("Off")) {
             button.setIcon(new ImageIcon(getClass().getResource("sound.png")));

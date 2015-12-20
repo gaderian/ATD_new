@@ -3,10 +3,10 @@ package GUI;
 import javax.swing.*;
 
 /**
- * Created by id12jzn on 2015-12-17.
- * <p>
  * The popup menu that shows when the user presses the menu button in game
  * Does different things depending on users choice also pauses the game while the menu is up
+ *
+ * Created by id12jzn on 2015-12-17.
  */
 public class PopupMenu {
     private CLayout c;
@@ -16,6 +16,9 @@ public class PopupMenu {
         this.c = c;
     }
 
+    /**
+     * Shows the popup window
+     */
     public void openPopup() {
         c.userinfo.pauseGame();
 

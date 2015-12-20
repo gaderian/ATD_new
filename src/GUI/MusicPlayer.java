@@ -7,7 +7,7 @@ import java.io.File;
 /**
  * A music player which is able to play and stop sounds from a certain path to a wav sound-file
  * <p>
- * Created by Zacke on 2015-12-11.
+ * Created by id12jzn on 2015-12-11.
  */
 public class MusicPlayer {
     private File file;

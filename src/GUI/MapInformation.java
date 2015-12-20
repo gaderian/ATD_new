@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * Interface which is used by the GUI classes to retrieve information from the model
  *
- * Created by Joakim on 2015-12-09.
+ * Created by id12jzn on 2015-12-09.
  */
 public interface MapInformation {
 

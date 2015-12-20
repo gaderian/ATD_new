@@ -6,7 +6,7 @@ import java.awt.event.*;
 /**
  * Listener for showing the new game GUI when that button is pressed, also updating the button
  * <p>
- * Created by Zacke on 2015-11-26.
+ * Created by id12jzn on 2015-11-26.
  */
 class NewGameListener implements MouseListener {
     private JButton button;

@@ -14,9 +14,9 @@ import java.util.HashMap;
 
 /**
  * Class: Board
- * main.GUI class for drawing the game board for the selected level, which in turn consists of several blocks
+ * GUI class for drawing the game board for the selected level, which in turn consists of several blocks
  * <p>
- * Created by Joakim on 2015-12-07.
+ * Created by id12jzn on 2015-12-07.
  */
 public class Board {
     public int worldWidth = 12;
@@ -41,6 +41,9 @@ public class Board {
         }
     }
 
+    /**
+     * Defines the game board and places blocks for every coordinate the baord consists of
+     */
     public void define() {
         block = new Block[worldHeight][worldWidth];
         HM = c.mapinfo.getMap(map);
@@ -58,7 +61,7 @@ public class Board {
      * draws it
      * there as a block
      *
-     * @param g
+     * @param g graphic to draw
      */
     public void draw(Graphics g) {
 
@@ -81,8 +84,6 @@ public class Board {
                 } else {
 
                         block[y][x].draw(g, this.defaultTile);
-
-
                 }
             }
         }

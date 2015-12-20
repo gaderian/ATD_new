@@ -19,6 +19,12 @@ public class GameListener implements MouseListener {
         this.g = g;
     }
 
+    /**
+     * Checks if the user clicks any of the store buttons, also checks if a user can afford a unit and if so it will
+     * create certain unit
+     *
+     * @param e a mouse event
+     */
     public void mouseClicked(MouseEvent e) {
         int x = e.getX() - ((g.myWidth / 2) - (g.gameBoard.blockSize * (g.gameBoard.worldWidth / 2)));
         int y = e.getY();
@@ -39,19 +45,15 @@ public class GameListener implements MouseListener {
     }
 
     public void mousePressed(MouseEvent e) {
-
     }
 
     public void mouseReleased(MouseEvent e) {
-
     }
 
     public void mouseEntered(java.awt.event.MouseEvent e) {
     }
 
     public void mouseExited(MouseEvent e) {
-
     }
-
 
 }
