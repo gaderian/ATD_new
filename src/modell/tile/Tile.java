@@ -24,12 +24,12 @@ public class Tile {
      * Tile is the constructor that will set the positon of the tile and
      * the image path that is different for all types of tiles.
      *
-     * @param p, the position of the tile
+     * @param p,       the position of the tile
      * @param imgPath, the path to witch image the tile have
      */
     public Tile(Position p, String imgPath) throws MalformedURLException {
-	    pos = p;
-	    path = getClass().getResource(imgPath);
+        pos = p;
+        path = getClass().getResource(imgPath);
         try {
             img = ImageIO.read(this.path);
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public class Tile {
      *
      * @param url, the url to the image
      */
-    public void changeImgURL(String url){
+    public void changeImgURL(String url) {
         path = getClass().getResource(url);
         try {
             img = ImageIO.read(path);
@@ -55,18 +55,20 @@ public class Tile {
     /**
      * getImage is a getter that will get the image of
      * the main.tile
+     *
      * @return image
      */
-    public BufferedImage getImg(){
-	return img;
+    public BufferedImage getImg() {
+        return img;
     }
 
     /**
      * getPostion is a getter that will get the position of the main.tile
+     *
      * @return
      */
     public Position getPosition() {
-	return pos;
+        return pos;
     }
 
 }

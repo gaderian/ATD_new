@@ -24,9 +24,9 @@ public class Renderer {
      * Creates a instance of Renderer
      *
      * @param height the height in pixels of the images which will be produced.
-     * @param width the width in pixels of the images which will be produced.
+     * @param width  the width in pixels of the images which will be produced.
      */
-    public Renderer(int height, int width){
+    public Renderer(int height, int width) {
         this.height = height;
         this.width = width;
     }
@@ -37,16 +37,17 @@ public class Renderer {
      * @param s a Stack containing the GraphicEvents which the image should be
      *          produced from
      */
-    public void drawImage(Stack<GraphicEvent> s){
+    public void drawImage(Stack<GraphicEvent> s) {
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         graphics = image.createGraphics();
         graphics.setBackground(new Color(255, 255, 255, 0));
 
-        while (!s.isEmpty()){
+        while (!s.isEmpty()) {
             GraphicEvent event = s.pop();
 
             Position corner = convertPosition(event);
-            graphics.drawImage(event.getImage(), corner.getX(), corner.getY(), null);
+            graphics.drawImage(event.getImage(),
+                    corner.getX(), corner.getY(), null);
         }
 
     }
@@ -60,8 +61,8 @@ public class Renderer {
      */
     private Position convertPosition(GraphicEvent event) {
 
-        int cornerX = event.getPos().getX() - event.getImage().getWidth()/2;
-        int cornerY = event.getPos().getY()- event.getImage().getHeight()/2;
+        int cornerX = event.getPos().getX() - event.getImage().getWidth() / 2;
+        int cornerY = event.getPos().getY() - event.getImage().getHeight() / 2;
 
         return new Position(cornerX, cornerY);
     }
@@ -71,7 +72,7 @@ public class Renderer {
      *
      * @return a BufferedImage of the latest rendered Image.
      */
-    public BufferedImage getImage(){
+    public BufferedImage getImage() {
         return image;
     }
 }

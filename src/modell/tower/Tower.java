@@ -1,6 +1,6 @@
 /**
  * Class:       tower
- *
+ * <p>
  * Author:      Erik Moström
  * cs-user:     dv14emm
  * Date:        2015-11-26
@@ -9,12 +9,15 @@
 package modell.tower;
 
 import javax.imageio.ImageIO;
+
 import modell.GraphicEvent;
 import modell.Position;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+
 import modell.unit.Unit;
 
 public abstract class Tower {
@@ -41,7 +44,7 @@ public abstract class Tower {
      * @param pos the position of the tower
      */
     protected Tower(int range, int speed, int damage, boolean air,
-                    boolean ground, Position pos){
+                    boolean ground, Position pos) {
         this.range = range;
         this.speed = speed;
         this.damage = damage;
@@ -62,10 +65,10 @@ public abstract class Tower {
      * @param newTarget the unit to check if within range.
      * @return true if the unit is within range, else false.
      */
-    public boolean withinRange(Unit newTarget){
-        if(newTarget.isFlying() && !air){
+    public boolean withinRange(Unit newTarget) {
+        if (newTarget.isFlying() && !air) {
             return false;
-        } else if (!newTarget.isFlying() && !ground){
+        } else if (!newTarget.isFlying() && !ground) {
             return false;
         }
 
@@ -77,7 +80,7 @@ public abstract class Tower {
      *
      * @param newTarget the new target
      */
-    public void setTarget(Unit newTarget){
+    public void setTarget(Unit newTarget) {
         target = newTarget;
     }
 
@@ -90,14 +93,15 @@ public abstract class Tower {
      * targeted unit
      */
     public GraphicEvent attack(int time) {
-        if(time - timeOfLastAttack >= speed){
+        if (time - timeOfLastAttack >= speed) {
             target.takeDamage(damage);
             timeOfLastAttack = time;
 
             BufferedImage laser = createLaserImage();
-            int laserID = (id+1)*-1;
-            GraphicEvent event = new GraphicEvent(laserID, getLaserPosition(), laser);
-            event.setVisibilityTime(time, (speed/3));
+            int laserID = (id + 1) * -1;
+            GraphicEvent event =
+                    new GraphicEvent(laserID, getLaserPosition(), laser);
+            event.setVisibilityTime(time, (speed / 5));
 
             return event;
         }
@@ -115,8 +119,8 @@ public abstract class Tower {
         int targetX = target.getPosition().getX();
         int targetY = target.getPosition().getY();
 
-        int x = towerX - ((towerX - targetX)/2 );
-        int y = towerY - ((towerY - targetY)/2 );
+        int x = towerX - ((towerX - targetX) / 2);
+        int y = towerY - ((towerY - targetY) / 2);
 
         return new Position(x, y);
     }
@@ -134,18 +138,18 @@ public abstract class Tower {
         int width = (towerPos.getX() - targetPos.getX());
         int height = (towerPos.getY() - targetPos.getY());
         if (height == 0) height++;
-        if (width == 0) width ++;
-        if (width < 0){
+        if (width == 0) width++;
+        if (width < 0) {
             width = width * -1;
         }
-        if (height < 0){
+        if (height < 0) {
             height = height * -1;
         }
 
         /*Calculate the coordinates for the lasers start and end points*/
         int x, dx, y, dy;
 
-        if (towerPos.getX() >= targetPos.getX()){
+        if (towerPos.getX() >= targetPos.getX()) {
             x = width;
             dx = 0;
         } else {
@@ -153,7 +157,7 @@ public abstract class Tower {
             dx = width;
         }
 
-        if (towerPos.getY() >= targetPos.getY()){
+        if (towerPos.getY() >= targetPos.getY()) {
             y = height;
             dy = 0;
         } else {
@@ -162,7 +166,8 @@ public abstract class Tower {
         }
 
         /*Make the image*/
-        BufferedImage laser = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage laser =
+                new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = laser.createGraphics();
         g.setColor(new Color(255, 0, 0));
         g.setStroke(new BasicStroke(2));
@@ -176,7 +181,7 @@ public abstract class Tower {
      *
      * @param path an URL to the image to be loaded
      */
-    protected void loadImage(URL path){
+    protected void loadImage(URL path) {
         try {
             image = ImageIO.read(path);
         } catch (IOException e) {
@@ -190,7 +195,7 @@ public abstract class Tower {
      *
      * @return true if current target is valid, else false.
      */
-    public boolean hasValidTarget(){
+    public boolean hasValidTarget() {
         if (target != null) {
             return target.isAlive() && withinRange(target);
         }

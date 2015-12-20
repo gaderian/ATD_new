@@ -4,6 +4,7 @@ import modell.tile.PathTile;
 import modell.tile.Start;
 import modell.tile.Tile;
 import modell.tile.TowerTile;
+
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -27,7 +28,7 @@ public class Map {
     /**
      * Creates a instance of Map, should only be accessed by a MapFactory
      */
-    protected Map(){
+    protected Map() {
         pathTiles = new HashMap<>();
         towerTiles = new HashMap<>();
         completeMap = new HashMap<>();
@@ -35,15 +36,16 @@ public class Map {
 
     /**
      * Adds a tile to the map, should only be called by a MapFactory.
+     *
      * @param t the tile to add
      */
-    protected void addTile(Tile t){
+    protected void addTile(Tile t) {
         if (PathTile.class.isAssignableFrom(t.getClass())) {
             pathTiles.put(t.getPosition(), t);
-            if(Start.class.isAssignableFrom(t.getClass())){
+            if (Start.class.isAssignableFrom(t.getClass())) {
                 startTile = t;
             }
-        } else if (TowerTile.class.isAssignableFrom(t.getClass())){
+        } else if (TowerTile.class.isAssignableFrom(t.getClass())) {
             towerTiles.put(t.getPosition(), t);
         }
         completeMap.put(t.getPosition(), t);
@@ -55,10 +57,10 @@ public class Map {
      * @param p the Position which to check.
      * @return the Tile of the position
      */
-    public Tile getTileAt(Position p){
+    public Tile getTileAt(Position p) {
         Tile tile = pathTiles.get(p);
 
-        if (tile == null){
+        if (tile == null) {
             tile = towerTiles.get(p);
         }
 
@@ -68,22 +70,22 @@ public class Map {
     /**
      * Method for troubleshooting maps.
      */
-    public void printMap(){
+    public void printMap() {
         System.out.println("map name:\t" + name);
         System.out.println("nr of waves:\t" + waves);
         System.out.println("score to win:\t" + winScore);
         System.out.println("starting gold:\t" + startingGold + "\n");
-        for (int row = 1; row <= 12; row++){
+        for (int row = 1; row <= 12; row++) {
             String line = "";
-            for (int col = 1; col <= 12; col++){
+            for (int col = 1; col <= 12; col++) {
                 Tile t = getTileAt(new Position(col, row));
-                if(t == null){
+                if (t == null) {
                     line = line + "  ";
-                }else if (TowerTile.class.isAssignableFrom(t.getClass())){
+                } else if (TowerTile.class.isAssignableFrom(t.getClass())) {
                     line = line + "T ";
-                }else if (PathTile.class.isAssignableFrom(t.getClass())){
+                } else if (PathTile.class.isAssignableFrom(t.getClass())) {
                     line = line + "P ";
-                }else {
+                } else {
                     line = line + "? ";
                 }
             }
@@ -169,7 +171,7 @@ public class Map {
      *
      * @return a Collection containing all the tower tiles
      */
-    public Collection<Tile> getTowerTiles(){
+    public Collection<Tile> getTowerTiles() {
         return towerTiles.values();
     }
 
@@ -198,19 +200,19 @@ public class Map {
      *
      * @param t the tile to swap with one already in the map
      */
-    public void swapTile(Tile t){
+    public void swapTile(Tile t) {
         Position tilePos = t.getPosition();
         Tile oldTile = getTileAt(tilePos);
 
         /*end if there are no old tile*/
-        if (oldTile == null){
+        if (oldTile == null) {
             return;
         }
 
         /* If both of the tiles are path tiles, give the new tile the position
          * where it should send units to */
-        if(PathTile.class.isAssignableFrom(t.getClass()) &&
-                PathTile.class.isAssignableFrom(oldTile.getClass())){
+        if (PathTile.class.isAssignableFrom(t.getClass()) &&
+                PathTile.class.isAssignableFrom(oldTile.getClass())) {
 
             PathTile path = (PathTile) t;
             PathTile oldPath = (PathTile) oldTile;
@@ -222,7 +224,7 @@ public class Map {
         }
 
         if (TowerTile.class.isAssignableFrom(t.getClass())
-                && PathTile.class.isAssignableFrom(oldTile.getClass())){
+                && PathTile.class.isAssignableFrom(oldTile.getClass())) {
 
             towerTiles.remove(tilePos);
             towerTiles.put(tilePos, t);
