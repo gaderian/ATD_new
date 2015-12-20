@@ -1,4 +1,3 @@
-
 import modell.Position;
 import modell.unit.AirUnit;
 import modell.unit.GroundUnit;
@@ -29,14 +28,17 @@ public class UnitTest {
      */
     @Test
     public void testMove() {
-        Position tempPos = new Position(11, 23);
         System.out.println("move");
+        Position tempTilePos = new Position(0, 0);
+        Unit testUnit = new UnitForTesting(new Position(0, 54/2), 1000);
+        testUnit.setNextTilePos(tempTilePos);
 
-        instance.move();
-        instance.move();
-
+        for(int i=0; i<52/2 ;i++){
+            testUnit.move();
+        }
+        
         boolean expResult = true;
-        boolean result = instance.getPosition().equals(tempPos);
+        boolean result = testUnit.getPosition().equals(new Position(53/2, 53/2));
 
         assertEquals(expResult, result);
     }
@@ -83,10 +85,15 @@ public class UnitTest {
     @Test
     public void testSetCurrentPosition() {
         System.out.println("setCurrentPosition");
-        Position pos = new Position(33, 33);
+        Position pos = new Position(4,4);
         instance.setCurrentPosition(pos);
         boolean expResult = true;
-        boolean result = instance.getPosition().equals(new Position(33, 33));
+        boolean result = instance.getPosition().equals
+        (new Position(((54*4) +(54/2))-1, ((54*4) +(54/2))-1));
+        
+        System.out.println(instance.getPosition().getX());
+         System.out.println(instance.getPosition().getY());
+        
         assertEquals(expResult, result);
     }
 
@@ -94,17 +101,42 @@ public class UnitTest {
      * Test of setNextPos method, of class Unit.
      */
     @Test
-    public void testSetNextPos() {
-        System.out.println("setDirection");
-        Position tempPos = new Position(10, 22);
-        instance.setNextTilePos(tempPos);
+    public void testSetNextTilePos() {
+        System.out.println("setNextPos");
+        Position tempTilePos = new Position(2, 0);
+        Unit testUnit = new UnitForTesting(new Position(0, 54/2), 1000);
+        testUnit.setNextTilePos(tempTilePos);
 
-        instance.move();
-
+        for(int i=0; i< ((54*2)+(54/2))-1 ;i++){
+            testUnit.move();
+        }
+        
         boolean expResult = true;
-        boolean result = instance.getPosition().equals(tempPos);
+        boolean result = testUnit.getPosition().equals
+        (new Position(((54*2)+(54/2))-1, (54/2)-1));
+
         assertEquals(expResult, result);
     }
+     /**
+     * Test of setNextPos method, of class Unit.
+     */
+    @Test
+    public void testSetNextTilePosFail() {
+        System.out.println("setNextPos");
+        Position tempTilePos = new Position(2, 0);
+        Unit testUnit = new UnitForTesting(new Position(0, 54/2), 1000);
+        testUnit.setNextTilePos(tempTilePos);
+
+        for(int i=0; i< ((54*2)+(54/2))-2 ;i++){
+            testUnit.move();
+        }
+        
+        boolean expResult = false;
+        boolean result = testUnit.getPosition().equals(new Position(((54*2)+(54/2))-1, (54/2)-1));
+
+        assertEquals(expResult, result);
+    }
+
 
     /**
      * Test of takeDamage method, of class Unit.
