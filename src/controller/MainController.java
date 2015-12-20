@@ -131,11 +131,23 @@ public class MainController implements MapInformation, UserInformation {
         }
     }
 
+    /**
+     * Returns the names of the levels in the specified map-file.
+     *
+     * @return the names of the levels in the map-file.
+     */
     @Override
     public ArrayList<String> getLevelNames() {
         return factory.getMapNames();
     }
 
+    /**
+     * Returns the entire map of a specified level if there is a level with that
+     * name.
+     *
+     * @param s the name of the desired level.
+     * @return a HashMap with the tiles of the level mapped to positions.
+     */
     @Override
     public HashMap<Position, Tile> getMap(String s) {
         map = factory.loadMap(s);
@@ -147,47 +159,83 @@ public class MainController implements MapInformation, UserInformation {
         return map.getCompleteMap();
     }
 
+    /**
+     * Will buy a unit. Which unit to buy is specified by the int sent to the
+     * method.
+     *
+     * @param i int specifying which unit to buy.
+     */
     @Override
     public void buyUnit(int i) {
         shop.buyUnit(i);
     }
 
+    /**
+     * Checks if the user has the resources to buy a specific unit.
+     *
+     * @param i int specifying which unit to check.
+     * @return true if the user has enough resources, else false.
+     */
     @Override
     public boolean canBuyUnit(int i) {
         return shop.canBuyUnit(i);
     }
 
+    /**
+     * Gives the name of a specific unit. Which unit is specified by an int.
+     *
+     * @param i int specifying which unit to get the name of.
+     * @return the name of the unit.
+     */
     @Override
     public String getUnitName(int i) {
         return null;
     }
 
+    /**
+     * Will set the users name.
+     *
+     * @param s the desired name of the user.
+     */
     @Override
     public void updateUsername(String s) {
         game.getUser().setUserName(s);
     }
 
+    /**
+     * Checks if the user has lost the game.
+     *
+     * @return true if the game is lost, else false.
+     */
     @Override
     public boolean gameOver() {
-        if (game != null) {
-            return game.isLoss();
-        }
-        return false;
+        return game != null && game.isLoss();
     }
 
+    /**
+     * Checks if the user has won the game.
+     *
+     * @return true if the user has won, else false.
+     */
     @Override
     public boolean gameWon() {
-        if (game != null) {
-            return game.isWon();
-        }
-        return false;
+        return game != null && game.isWon();
     }
 
+    /**
+     * Returns the user of the game.
+     *
+     * @return the User of the game.
+     */
     @Override
     public User getUser() {
         return game.getUser();
     }
 
+    /**
+     * Shuts the game down. Will stop the updating of the current game and
+     * remove all references to it.
+     */
     @Override
     public void killGame() {
         timer.cancel();
@@ -198,16 +246,29 @@ public class MainController implements MapInformation, UserInformation {
 
     }
 
+    /**
+     * Pauses the game. Will stop the updating of the current game.
+     */
     @Override
     public void pauseGame() {
         timer.cancel();
     }
 
+    /**
+     * Resumes a paused game. Should not be called if the game hasn't been
+     * paused.
+     */
     @Override
     public void resumeGame() {
         start();
     }
 
+    /**
+     * Called if the user clicks somewhere in the game.
+     *
+     * @param x the x coordinate of the click
+     * @param y the y coordinate of the click
+     */
     @Override
     public void hasClicked(int x, int y) {
         game.clickAtPos(new Position(x, y));

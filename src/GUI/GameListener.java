@@ -28,7 +28,6 @@ public class GameListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int x = e.getX() - ((g.myWidth / 2) - (g.gameBoard.blockSize * (g.gameBoard.worldWidth / 2)));
         int y = e.getY();
-        System.out.println(x + " " + y);
         c.userinfo.hasClicked(x, y);
 
         if (g.store.button[0].contains(e.getPoint()) && c.userinfo.canBuyUnit(1)) {

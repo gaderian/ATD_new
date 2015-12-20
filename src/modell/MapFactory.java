@@ -234,14 +234,11 @@ public class MapFactory {
                     pTile.sendToPos(extractPosition(positionList.item(i)));
                 }
             }
-        } catch (InstantiationException e) {
+        } catch (InstantiationException | IllegalAccessException |
+                NoSuchMethodException | InvocationTargetException e) {
+            System.err.println("Something went wrong creating the tiles.");
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            System.exit(0);
         }
 
         return tile;

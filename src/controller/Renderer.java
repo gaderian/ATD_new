@@ -18,7 +18,6 @@ public class Renderer {
     private final int width;
     private final int height;
     private BufferedImage image;
-    private Graphics2D graphics;
 
     /**
      * Creates a instance of Renderer
@@ -39,7 +38,7 @@ public class Renderer {
      */
     public void drawImage(Stack<GraphicEvent> s) {
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        graphics = image.createGraphics();
+        Graphics2D graphics = image.createGraphics();
         graphics.setBackground(new Color(255, 255, 255, 0));
 
         while (!s.isEmpty()) {
