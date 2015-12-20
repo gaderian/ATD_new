@@ -11,10 +11,14 @@ package modell.unit;
  */
 import modell.Position;
 import modell.PositionConverter;
+
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import modell.tile.Teleporter;
 import modell.tile.Tile;
+
+import javax.imageio.ImageIO;
 
 public class TeleporterUnit extends Unit {
 
@@ -36,6 +40,11 @@ public class TeleporterUnit extends Unit {
         super.imagePath = imgUrl;
         super.teleporter = true;
         super.isClickableUnit = true;
+        try {
+            super.image = ImageIO.read(imgUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

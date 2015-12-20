@@ -7,6 +7,9 @@ import java.awt.*;
 
 import modell.tile.Tile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -24,11 +27,18 @@ public class Board {
     private String map;
     private String tile;
     HashMap<Position, Tile> HM;
+    private BufferedImage defaultTile;
 
     public Board(CLayout c, String map) {
         this.c = c;
         this.map = map;
         define();
+        /*Load the default image and save it as bufferedImage*/
+        try {
+            defaultTile = ImageIO.read(getClass().getResource("defaultTile.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void define() {
@@ -66,10 +76,13 @@ public class Board {
 
                 if (t != null) {
                     if (Tile.class.isAssignableFrom(t.getClass())) {
-                        block[y][x].draw(g, t.getImageURL());
+                        block[y][x].draw(g, t.getImg());
                     }
                 } else {
-                    block[y][x].draw(g, getClass().getResource("defaultTile.png"));
+
+                        block[y][x].draw(g, this.defaultTile);
+
+
                 }
             }
         }

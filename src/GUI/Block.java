@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 
 /**
@@ -19,8 +20,8 @@ public class Block extends Rectangle {
     }
 
     /*Added by Erik M*/
-    public void draw(Graphics g, URL tilepath) {
+    public void draw(Graphics g, BufferedImage tileImg) {
 
-        g.drawImage(new ImageIcon(tilepath, "tile").getImage(), x, y, width, height, null);
+        g.drawImage(tileImg, x, y, width, height, null);
     }
 }

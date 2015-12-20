@@ -25,7 +25,8 @@ public class User {
 
     public User(int credits, int income) {
         this.income = income;
-        this.credits = credits;
+        this.credits = (credits);
+        this.credits = (credits);
     }
 
     public int getIncome() { return income; }

@@ -11,6 +11,9 @@ package modell.unit;
  * Date: 2015-11-26
  */
 import modell.Position;
+
+import javax.imageio.ImageIO;
+import java.io.IOException;
 import java.net.URL;
 
 public class AirUnit extends Unit {
@@ -27,6 +30,11 @@ public class AirUnit extends Unit {
         super.pos = pos;
         super.flying = true;
         super.imagePath = imgUrl;
+        try {
+            super.image = ImageIO.read(imgUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

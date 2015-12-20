@@ -8,7 +8,9 @@ package modell.tile;
 
 import modell.Position;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -28,6 +30,11 @@ public class Tile {
     public Tile(Position p, String imgPath) throws MalformedURLException {
 	    pos = p;
 	    path = getClass().getResource(imgPath);
+        try {
+            img = ImageIO.read(this.path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

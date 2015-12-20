@@ -33,7 +33,9 @@ public abstract class Unit {
     protected int id;
     private Position nextTilePos;
     protected URL imagePath;
+    protected BufferedImage image;
     protected int health;
+    private double fullHealth = -1;
     protected int price;
     protected int speed;
     protected boolean isClickableUnit = false;
@@ -60,14 +62,6 @@ public abstract class Unit {
         this.flying = false;
         this.id = id;
 
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public void setFlying(boolean flying) {
-        this.flying = flying;
     }
 
     /**
@@ -104,6 +98,9 @@ public abstract class Unit {
     }
 
     public void takeDamage(int dmg) {
+        if(fullHealth == -1){
+            this.fullHealth = health;
+        }
         this.health -= dmg;
         this.lastDmg = dmg;
         this.lastTimeDmg = System.currentTimeMillis();
@@ -168,25 +165,23 @@ public abstract class Unit {
 
     public GraphicEvent generateGraphicEvent() {
         BufferedImage whole = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
-        BufferedImage sprite = null;
-
-        try {
-            sprite = ImageIO.read(this.imagePath);
-        } catch (IOException ex) {
-            System.err.println(ex.getCause().toString());
-        }
+        BufferedImage sprite = image;
 
         Graphics2D g = whole.createGraphics();
         g.drawImage(sprite, 0, 0, null);
 
         if ((System.currentTimeMillis() - lastTimeDmg) < dmgGraphicDelay) {
+            double length = 40;
+            int greenRect = (int)((health/fullHealth) * length);
+
             g.setColor(new Color(255, 0, 27));
             g.setStroke(new BasicStroke(2));
             g.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, 12));
             g.drawString(String.valueOf("-" + String.valueOf(this.lastDmg)), (sprite.getWidth() / 3), (sprite.getHeight() / 4));
             g.fillRect(0,40,40,4);
             g.setColor(new Color(59, 255, 0));
-            g.fillRect(0,40,health,4);
+            g.fillRect(0,40,greenRect,4);
+
         }
         return (new GraphicEvent(this.id, this.pos, whole));
     }

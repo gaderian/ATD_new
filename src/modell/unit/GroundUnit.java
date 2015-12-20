@@ -10,6 +10,9 @@ package modell.unit;
  * Date: 2015-11-26
  */
 import modell.Position;
+
+import javax.imageio.ImageIO;
+import java.io.IOException;
 import java.net.URL;
 
 
@@ -28,6 +31,11 @@ public class GroundUnit extends Unit {
         super.pos = pos;
         super.flying = false;
         super.imagePath = imgUrl;
+        try {
+            super.image = ImageIO.read(imgUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static int getPrice() {
