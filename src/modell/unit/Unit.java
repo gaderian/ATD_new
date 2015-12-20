@@ -10,21 +10,17 @@ package modell.unit;
  * Date: 2015-11-26
  */
 
-
-import javax.imageio.ImageIO;
 import modell.GraphicEvent;
 import modell.Position;
 import modell.PositionConverter;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.URL;
 import modell.tile.Tile;
 
 public abstract class Unit {
     /*Static variables*/
-
     protected static final int MAXSPEED = 50;
     private static final int tileSize = 54;
     private static final int dmgGraphicDelay = 500;

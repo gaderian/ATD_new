@@ -1,14 +1,5 @@
 package modell.unit;
 
-/*
- * Class: TeleporterUnit
- *
- * Author: Isak Hjelt
- *
- * cs-user: dv14iht
- *
- * Date: 2015-11-26
- */
 import modell.Position;
 import modell.PositionConverter;
 
@@ -20,12 +11,20 @@ import modell.tile.Tile;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Class: TeleporterUnit
+
+ * Author: Isak Hjelt
+
+ * cs-user: dv14iht
+
+ * Date: 2015-11-26
+ */
+
 public class TeleporterUnit extends Unit {
 
     private static int price = 50;
     private static URL imgUrl = Unit.class.getResource("teleporterUnit.png");
-    private boolean hasTeleStart;
-    private int telePlacedTime;
     private Teleporter teleportStart = null;
     private Teleporter teleportEnd = null;
 
@@ -45,17 +44,6 @@ public class TeleporterUnit extends Unit {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Has the unit placed a teleportation start?
-     */
-    private boolean hasTeleStart(){
-        return hasTeleStart;
-    }
-    public void setHasTeleStart(boolean hasTeleStart, int telePlacedTime){
-        this.hasTeleStart = hasTeleStart;
-        this.telePlacedTime = telePlacedTime;
     }
 
     /**
@@ -84,12 +72,12 @@ public class TeleporterUnit extends Unit {
         return null;
     }
 
+    /**
+     * A static function to get the price of the unit.
+     *
+     * @return the price of the unit.
+     */
     public static int getPrice() {
         return price;
     }
-    public static URL getImg(){
-        return imgUrl;
-    }
-
-
 }

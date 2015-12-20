@@ -52,15 +52,6 @@ public class Tile {
         }
     }
 
-
-    /**
-     * getImageURL is a method that gets the URL of the image
-     * @return URL of the image
-     */
-    public URL getImageURL(){
-        return path;
-    }
-
     /**
      * getImage is a getter that will get the image of
      * the main.tile

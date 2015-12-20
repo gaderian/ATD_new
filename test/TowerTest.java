@@ -1,9 +1,9 @@
-/* import org.junit.Test;
-import main.java.Position;
-import main.java.main.tower.Tower;
-import main.java.main.unit.Unit;
+import modell.Position;
+import modell.tower.Tower;
+import modell.unit.Unit;
+import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TowerTest {
@@ -18,7 +18,7 @@ public class TowerTest {
 
 
     /* ********** TESTS FOR: withingRange(Unit) ********** */
-    /*@Test
+    @Test
     public void shouldReturnTrueForSamePos() throws Exception {
         unitAndTower(new Position(10, 10), new Position(10, 10));
         assertTrue(t.withinRange(u));
@@ -57,8 +57,7 @@ public class TowerTest {
     @Test
     public void shouldReturnFalseForFlyingUnitWithinRange() throws Exception {
         t = new TestGroundTower(new Position(10, 10));
-        u = new TestUnit(new Position(12, 12));
-        u.setFlying(true);
+        TestUnitFlying u = new TestUnitFlying(new Position(12, 12));
 
         assertFalse(t.withinRange(u));
     }
@@ -66,9 +65,9 @@ public class TowerTest {
 
 
     /* ********** TESTS FOR: attack() ********** */
-   /* @Test
+    @Test
     public void shouldKillTargetWithFirstShot() throws Exception {
-        unitWithHealthAndTower(new Position(12, 12), 10, new Position(10, 10));
+        unitAndTower(new Position(12, 12), new Position(10, 10));
         t.setTarget(u);
         t.attack(10);
         assertFalse(u.isAlive());
@@ -76,14 +75,14 @@ public class TowerTest {
 
     @Test
     public void shouldNotKillTargetWithFirstShot() throws Exception {
-        unitWithHealthAndTower(new Position(12, 12), 11, new Position(10, 10));
+        uniAndWeakTower(new Position(12, 12), new Position(10, 10));
         t.setTarget(u);
         t.attack(10);
         assertTrue(u.isAlive());
     }
     @Test
     public void shouldNotAttackIfToSoon() throws Exception {
-        unitWithHealthAndTower(new Position(12, 12), 10, new Position(10, 10));
+        unitAndTower(new Position(12, 12), new Position(10, 10));
         t.setTarget(u);
         t.attack(5);
         assertTrue(u.isAlive());
@@ -93,30 +92,31 @@ public class TowerTest {
 
 
     /* ********** TESTS FOR: hasValidTarget() ********** */
-    /*@Test
+    @Test
     public void shouldReturnTrueForLivingTargetWithinRange() throws Exception {
-        unitWithHealthAndTower(new Position(10, 15), 25, new Position(10, 10));
+        unitAndTower(new Position(10, 15), new Position(10, 10));
         t.setTarget(u);
         assertTrue(t.hasValidTarget());
     }
 
     @Test
     public void shouldReturnFalseForDeadTargetWithinRange() throws Exception {
-        unitWithHealthAndTower(new Position(12, 12), 0, new Position(10, 10));
+        unitAndTower(new Position(12, 12), new Position(10, 10));
+        u.takeDamage(10);
         t.setTarget(u);
         assertFalse(t.hasValidTarget());
     }
 
     @Test
     public void shouldReturnFalseForLivingTargetOutOfRange() throws Exception {
-        unitWithHealthAndTower(new Position(20, 20),10, new Position(10, 10));
+        unitAndTower(new Position(20, 20), new Position(10, 10));
         t.setTarget(u);
         assertFalse(t.hasValidTarget());
     }
 
     @Test
     public void shouldReturnFalseForDeadTargetOutOfRange() throws Exception {
-        unitWithHealthAndTower(new Position(20, 20), 0, new Position(10, 10));
+        unitAndTower(new Position(20, 20), new Position(10, 10));
         t.setTarget(u);
         assertFalse(t.hasValidTarget());
     }
@@ -124,22 +124,29 @@ public class TowerTest {
 
 
     /* ********** Helping methods ********** */
-    /*private void unitAndTower(Position unitPos, Position towerPos) {
+    private void unitAndTower(Position unitPos, Position towerPos) {
         u = new TestUnit(unitPos);
         t = new TestTower(towerPos);
     }
 
-    private void unitWithHealthAndTower(Position unitPos, int unitHealth, Position towerPos){
-        unitAndTower(unitPos, towerPos);
-        u.setHealth(unitHealth);
+    private void uniAndWeakTower(Position unitPos, Position towerPos){
+        u = new TestUnit(unitPos);
+        t = new TestTowerWeak(towerPos);
     }
 
 
 
     /* ********** Classes for testing ********** */
-    /*protected static class TestUnit extends Unit {
+    protected static class TestUnit extends Unit {
         public TestUnit(Position pos){
-            super(pos);
+            super(pos, 1);
+        }
+    }
+
+    protected static class TestUnitFlying extends Unit {
+        public TestUnitFlying(Position pos){
+            super(pos, 1);
+            flying = true;
         }
     }
 
@@ -151,10 +158,15 @@ public class TowerTest {
         }
     }
 
+    protected static class TestTowerWeak extends Tower {
+        public TestTowerWeak(Position pos){
+            super(10,10, 5, true, true, pos);
+        }
+    }
+
     protected static class TestGroundTower extends Tower {
         public TestGroundTower(Position pos){
             super(10, 10, 10, false, true, pos);
         }
     }
 }
-*/
