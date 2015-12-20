@@ -1,19 +1,19 @@
 package modell;
 
-import java.net.URL;
 import modell.unit.AirUnit;
 import modell.unit.GroundUnit;
 import modell.unit.TeleporterUnit;
 
 /**
- * Class: Game
+ * Class: Shop
  *
  * Author: Isak Hjelt
  *
  * cs-user: dv14iht
  *
- * Date: 2015-12-15
+ * Date: 2015-12-18
  */
+
 public class Shop {
 
     private User shopUser;
@@ -50,7 +50,6 @@ public class Shop {
         }
     }
 
-
     /**
      *
      * @param unitTypeId the id of the unit.
@@ -77,26 +76,5 @@ public class Shop {
             default: throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
         }
         return false;
-    }
-    /**
-     *
-     * @param unitTypeId the id of the unit.
-     *
-     * @return returns a URL for the specified unit type.
-     */
-    public URL getUnitImg(int unitTypeId){
-        switch (unitTypeId){
-            case 1:
-                AirUnit.getImg();
-                break;
-            case 2:
-                GroundUnit.getImg();
-                break;
-            case 3:
-                TeleporterUnit.getImg();
-                break;
-            default: throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
-        }
-        return null;
     }
 }

@@ -1,12 +1,4 @@
-package modell; /**
- * Class: Game
- *
- * Author: Isak Hjelt
- *
- * cs-user: dv14iht
- *
- * Date: 2015-11-30
- */
+package modell;
 
 import modell.tile.TCross;
 import modell.tile.Tile;
@@ -21,6 +13,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ * Class: Game
+ *
+ * Author: Isak Hjelt
+ *
+ * cs-user: dv14iht
+ *
+ * Date: 2015-11-30
+ */
 
 public class Game {
 
@@ -49,6 +50,9 @@ public class Game {
         makeTowers();
     }
 
+    /**
+     * Updates the whole game one time.
+     */
     public void update() {
         /*Update the units*/
         updateUnits();
@@ -62,6 +66,9 @@ public class Game {
 
     }
 
+    /**
+     * Updates all the units one time each.
+     */
     private void updateUnits() {
         synchronized (gameShop) {
 
@@ -102,6 +109,9 @@ public class Game {
         }
     }
 
+    /**
+     * Updates all the towers one time each.
+     */
     private void updateTowers() {
         ListIterator itrTowers = towers.listIterator();
         Tower currentTower;
@@ -133,9 +143,21 @@ public class Game {
             }
         }
     }
+
+    /**
+     * Check if the game is won.
+     *
+     * @return true if the game is won and false if not.
+     */
     public boolean isWon(){
         return this.unitsReachedGoal >= this.map.getWinScore();
     }
+
+    /**
+     * Tell the game that a mouse click was registered at a position in the game.
+     *
+     * @param clickPos, the position of the click.
+     */
     public void clickAtPos(Position clickPos){
         Position p = PositionConverter.unitPosConverter(clickPos);
         Tile newTile = null;
@@ -166,10 +188,20 @@ public class Game {
         }
     }
 
+    /**
+     * Check if the game is lost.
+     *
+     * @return returns true if the game is lost and false if not.
+     */
     public boolean isLoss(){
         return ((this.units.size() == 0) && (this.user.getCredits() < 30));
     }
 
+    /**
+     * add a new unit to the game. This function will place the unit at the start of the game.
+     *
+     * @param unit
+     */
     public void addUnit(Unit unit){
         TileAction currentTile;
         Position tempTilePos;
@@ -190,10 +222,17 @@ public class Game {
         }
     }
 
+    /**
+     *
+     * @return returns the Shop of the game.
+     */
     public Shop getShop(){
         return this.gameShop;
     }
 
+    /**
+     * A function for placing towers randomly on the map.
+     */
     private void makeTowers(){
         int nrOfTowerTiles = map.getTowerTiles().size();
         Iterator it = map.getTowerTiles().iterator();
@@ -246,6 +285,11 @@ public class Game {
         }
     }
 
+    /**
+     * Get an object that represents how the game looks graphically at the moment of the call.
+     *
+     * @return
+     */
     public CurrentGraphicState getGraphicState(){
         return this.graphicState;
     }
@@ -261,6 +305,10 @@ public class Game {
         return ret;
     }
 
+    /**
+     *
+     * @return the User objct of the game.
+     */
     public User getUser(){
         return user;
     }

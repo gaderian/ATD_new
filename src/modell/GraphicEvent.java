@@ -1,4 +1,8 @@
-package modell; /**
+package modell;
+
+import java.awt.image.BufferedImage;
+
+/**
  * Class: GraphicEvent
  *
  * Author: Isak Hjelt
@@ -7,8 +11,6 @@ package modell; /**
  *
  * Date: 2015-12-07
  */
-
-import java.awt.image.BufferedImage;
 
 public class GraphicEvent {
 
@@ -25,18 +27,30 @@ public class GraphicEvent {
         this.id = id;
         this.image = img;
     }
-    /*Set i a time the Graphic object will be visible. When the object has 
-     lived for the specified time (measured in game ticks) it will be removed. If this time is not set 
-     the object will live untill it is removed*/
 
+    /**
+     * Set a time the Graphic object will be visible. When the object has
+     * lived for the specified time (measured in game ticks) it will be removed. If this time is not set
+     * the object will live until it is removed.
+     *
+     * @param timestamp
+     * @param visibilityTime
+     */
     public void setVisibilityTime(int timestamp, int visibilityTime) {
         this.visibilityTime = visibilityTime;
         this.timeStamp = timestamp;
     }
 
+    /**
+     * Check if this event should be removed.
+     *
+     * @param currentTime the current time (in ticks).
+     * @return returns true if the event should be removed and false if not.
+     */
     public boolean shouldBeRemoved(int currentTime) {
         return ((currentTime)-(this.timeStamp)) >= this.visibilityTime;
     }
+
     /**
      * 
      * @return true if this object has a set lifetime false if not.
@@ -45,18 +59,26 @@ public class GraphicEvent {
         return this.visibilityTime >= 0;
     }
 
+    /**
+     *
+     * @return returns the id of the event.
+     */
     public int getId() {
         return this.id;
     }
 
-    public boolean isLaserEvent() {
-        return isLaserEvent;
-    }
-    
+    /**
+     *
+     * @return returns the position the event is registered on.
+     */
     public Position getPos(){
         return this.pos;
     }
 
+    /**
+     *
+     * @return returns the image of the event.
+     */
     public BufferedImage getImage() {
         return this.image;
     }

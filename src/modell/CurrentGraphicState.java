@@ -7,9 +7,15 @@ import java.util.ListIterator;
 import java.util.Stack;
 
 /**
+ * Class: Game
  *
- * @author guldsmurfen
+ * Author: Isak Hjelt
+ *
+ * cs-user: dv14iht
+ *
+ * Date: 2015-11-30
  */
+
 public class CurrentGraphicState {
 
     private HashMap allGraphicEvents;
@@ -40,6 +46,12 @@ public class CurrentGraphicState {
          }
     }
 
+    /**
+     * Add a graphic event. If the event has the same id as another event already added the new one will replace the
+     * old event.
+     *
+     * @param e, the event
+     */
     public void addGraphicEvent(GraphicEvent e) {
         this.allGraphicEvents.put(e.getId(), e);
         if(e.isLifeTimeObject()){
@@ -47,6 +59,11 @@ public class CurrentGraphicState {
         }
     }
 
+    /**
+     * Removes the event with the same id as the specified one.
+     *
+     * @param e, an event that should be removed.
+     */
     public void removeGraphicEvent(GraphicEvent e){
         this.allGraphicEvents.remove(e.getId());
     }

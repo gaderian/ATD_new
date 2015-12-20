@@ -1,6 +1,12 @@
 package modell.unit;
 
-/*
+import modell.Position;
+
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.net.URL;
+
+/**
  * Class: GroundUnit
 
  * Author: Isak Hjelt
@@ -9,12 +15,6 @@ package modell.unit;
 
  * Date: 2015-11-26
  */
-import modell.Position;
-
-import javax.imageio.ImageIO;
-import java.io.IOException;
-import java.net.URL;
-
 
 public class GroundUnit extends Unit {
 
@@ -38,12 +38,13 @@ public class GroundUnit extends Unit {
         }
     }
 
+    /**
+     * A static function to get the price of the unit.
+     *
+     * @return the price of the unit.
+     */
     public static int getPrice() {
         return price;
-    }
-
-    public static URL getImg(){
-        return imgUrl;
     }
 
 }
