@@ -1,4 +1,3 @@
-import java.awt.image.BufferedImage;
 import modell.GraphicEvent;
 import modell.Position;
 import org.junit.Before;
