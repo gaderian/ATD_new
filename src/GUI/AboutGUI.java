@@ -2,7 +2,7 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-/* Start
+/* AboutGUI
  *
  * Date 29/11- 2015
  * @author id12jwn
@@ -24,6 +24,11 @@ public class AboutGUI extends JPanel {
     private JLabel middelLabel3 = new JLabel();
     private JLabel middelLabel4 = new JLabel();
 
+    /**
+     * AboutGUI is a constructor that will sett parametern c
+     * to its Clayout
+     * @param c
+     */
     public AboutGUI(CLayout c) {
         this.c = c;
     }
