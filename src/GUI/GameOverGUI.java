@@ -40,6 +40,11 @@ public class GameOverGUI {
         }
     }
 
+    /**
+     * Builds the upper part of the GUI
+     *
+     * @return Jpanel including this
+     */
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
         JPanel space = new JPanel();
@@ -56,6 +61,11 @@ public class GameOverGUI {
         return upperPanel;
     }
 
+    /**
+     * Builds the middle part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
@@ -89,6 +99,11 @@ public class GameOverGUI {
         return middlePanel;
     }
 
+    /**
+     * Builds the lower part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));

@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
  * switch between
  * different cards after it built them.
  * <p>
- * Created by Zacke on 2015-12-01.
+ * Created by id12jzn on 2015-12-01.
  */
 public class CLayout {
 
@@ -99,6 +99,7 @@ public class CLayout {
 
     /**
      * Resizes the frame and shows the card containing the gameOver
+     * It also updates the database for the highscores if the user enters a username
      */
     public void showGameOver() {
 
@@ -124,6 +125,9 @@ public class CLayout {
 
     }
 
+    /**
+     * Resizes frame and shows the main menu
+     */
     public void showMainMenu() {
         frame.setSize(600, 600);
         frame.setLocationRelativeTo(null);
@@ -154,5 +158,4 @@ public class CLayout {
         //return game.gameBoard.blockSize;
         return 54;
     }
-
 }

@@ -6,11 +6,10 @@ import java.awt.*;
 /**
  * Builds the starting menu GUI for when the application is starting
  * <p>
- * Created by Joakim on 2015-11-30.
+ * Created by id12jzn on 2015-11-30.
  */
 public class MenuGUI {
 
-    private JFrame frame;
     private JPanel panel = new JPanel();
     private JButton newGame;
     private JButton highScore;
@@ -27,6 +26,11 @@ public class MenuGUI {
         this.c = c;
     }
 
+    /**
+     * Builds the upper part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
         JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("loggo.png")));
@@ -36,6 +40,11 @@ public class MenuGUI {
         return upperPanel;
     }
 
+    /**
+     *Builds the middle part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
@@ -94,6 +103,11 @@ public class MenuGUI {
         return middlePanel;
     }
 
+    /**
+     * Builds the lower part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -110,7 +124,7 @@ public class MenuGUI {
     }
 
     /**
-     * @return The main menu main.GUI as a JPanel
+     * @return The main menu GUI as a JPanel
      */
     public JPanel getPanel() {
         panel.setBackground(new Color(56, 134, 96));
@@ -119,8 +133,6 @@ public class MenuGUI {
         lowerPanel = buildLowerPanel();
 
         panel.setLayout(new BorderLayout());
-
-
         //Add panels to the frame
         panel.add(upperPanel, BorderLayout.NORTH);
         panel.add(middlePanel, BorderLayout.CENTER);

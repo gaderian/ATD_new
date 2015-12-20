@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Builds the GUI for the menu when the new game button is pressed it reads in all the levels and displays them in a
  * drop down list where the user can select a level then actually start the game
  * <p>
- * Created by Joakim on 2015-12-02.
+ * Created by id12jzn on 2015-12-02.
  */
 public class NewGameGUI {
     private ArrayList<String> levels;
@@ -25,18 +25,26 @@ public class NewGameGUI {
         this.c = c;
     }
 
+    /**
+     * Builds the upper part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
-
         //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
         JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("loggo.png")));
         upperPanel.add(picLabel);
-
         upperPanel.setOpaque(false);
 
         return upperPanel;
     }
 
+    /**
+     * Builds the middle part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         middlePanel.setBackground(new Color(56, 134, 96));
@@ -92,6 +100,11 @@ public class NewGameGUI {
         return middlePanel;
     }
 
+    /**
+     * Builds the lower part of the GUI including the toggle ssound icon
+     *
+     * @return JPanel including this
+     */
     private JPanel buildSoundPanel() {
         JPanel soundPanel = new JPanel();
         soundPanel.setBackground(new Color(56, 134, 96));

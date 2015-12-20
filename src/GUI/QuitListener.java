@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 /**
  * Listener for when the quit button is pressed and is able to update the button. When it's pressed it closes the game
  * <p>
- * Created by Joakim on 2015-11-30.
+ * Created by id12jzn on 2015-11-30.
  */
 public class QuitListener implements MouseListener {
     private JButton button;

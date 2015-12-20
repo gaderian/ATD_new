@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Listener for when the settings-button is rpessed in game. When it's pressed it show the popup-menu
+ * Listener for when the settings-button is pressed in game. When it's pressed it show the popup-menu
  *
  * Created by id12jzn on 2015-12-17.
  */

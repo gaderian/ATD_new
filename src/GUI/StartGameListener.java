@@ -20,6 +20,11 @@ public class StartGameListener implements MouseListener {
         this.jcb = jcb;
     }
 
+    /**
+     * When the button is pressed it shows the game GUI which creates the game board depending on wich level was chosen
+     *
+     * @param e mouse event
+     */
     public void mouseClicked(MouseEvent e) {
         c.showGame(jcb.getSelectedItem().toString());
     }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Class that connects to a database in which it can store a users highscore in a table via SQL and also be able to
  * read that table and return the information
  * <p>
- * Created by Joakim on 2015-12-11.
+ * Created by id12jzn on 2015-12-11.
  */
 public class HighscoreDB {
 

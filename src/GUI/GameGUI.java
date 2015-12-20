@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  * Builds and paints the GUI for the game screen when a new game is started, it includes the game board, the store, and
  * settings buttons. The board and store is built via Board and Store classes
  * <p>
- * Created by Zacke on 2015-11-26.
+ * Created by id12jzn on 2015-11-26.
  */
 public class GameGUI extends JPanel implements Runnable {
     private JLayeredPane gamePanel = new JLayeredPane();
@@ -41,7 +41,7 @@ public class GameGUI extends JPanel implements Runnable {
     /**
      * Is used to paint everything on the game GUI, the first time this is run it creates the board and store components
      *
-     * @param g
+     * @param g graphic to draw
      */
     public void paintComponent(Graphics g) {
 
@@ -157,8 +157,10 @@ public class GameGUI extends JPanel implements Runnable {
         this.b = b;
     }
 
+    /**
+     * Is called when a game is restarded which is a boolean used to create a new game board
+     */
     public void restart() {
         isFirst = true;
     }
-
 }

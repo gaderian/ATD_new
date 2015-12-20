@@ -11,15 +11,11 @@ import java.util.ArrayList;
  * Class HighScoreGUI
  * Builds the GUI for the highscore panel. This calls the HighscoreDB class to retrieve the info from the database
  * <p>
- * Created by Joakim on 2015-12-02.
+ * Created by id12jzn on 2015-12-02.
  */
 public class HighScoreGUI {
 
-    private JFrame frame;
     private JPanel panel = new JPanel();
-    private JButton newGame;
-    private JButton highScore;
-    private JButton quit;
     private JButton sound;
     private JButton back;
     private JPanel upperPanel = null;
@@ -37,6 +33,11 @@ public class HighScoreGUI {
     }
     JLabel label = new JLabel();
 
+    /**
+     * Builds the upper part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
         JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("loggo.png")));
@@ -46,6 +47,11 @@ public class HighScoreGUI {
         return upperPanel;
     }
 
+    /**
+     * Builds middle part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildMiddelPanel() {
         JPanel middelPanel = new JPanel();
         middelPanel.setBackground(new Color(56, 134, 96));
@@ -57,6 +63,11 @@ public class HighScoreGUI {
         return middelPanel;
     }
 
+    /**
+     * Builds the lower part of the GUI
+     *
+     * @return JPanel including this
+     */
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -88,7 +99,7 @@ public class HighScoreGUI {
     }
 
     /**
-     * @return The highscore main.GUI as a JPanel
+     * @return The highscore GUI as a JPanel
      */
     public JPanel getPanel() {
 
@@ -114,8 +125,5 @@ public class HighScoreGUI {
         label.setText("");
         highscores = dbs.getData();
         highscores.forEach((temp) -> label.setText("<html>" + label.getText() + "\t\t\t" + "<br>" + temp + "<html>"));
-
     }
-
-
 }

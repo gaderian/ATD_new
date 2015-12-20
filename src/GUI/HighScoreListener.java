@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 /**
  * Listener for showing the highscore GUI and changing the highscore button
  *
- * Created by Joakim on 2015-11-30.
+ * Created by id12jzn on 2015-11-30.
  */
 public class HighScoreListener implements MouseListener {
     private JButton button;
@@ -18,6 +18,11 @@ public class HighScoreListener implements MouseListener {
         this.c = c;
     }
 
+    /**
+     * Updates the highscores before showing the highscore GUI
+     *
+     * @param e mouse event
+     */
     public void mouseClicked(MouseEvent e) {
         c.highScore.updateHighscores();
         c.showCard("highScore");
