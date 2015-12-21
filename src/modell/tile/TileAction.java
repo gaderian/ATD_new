@@ -19,6 +19,6 @@ public interface TileAction {
      *
      * @param unit, the unit that will step on the tile
      */
-    public void landOn(Unit unit);
+    void landOn(Unit unit);
 
 }

@@ -20,7 +20,8 @@ public class TowerTile extends Tile {
     /**
      *  TowerTile is a conctructor that eill set the positon of the
      *  tile and also the image path to its image
-     * @param p
+     *
+     * @param p the position of the tile
      */
     public TowerTile(Position p) throws MalformedURLException {
 	    super(p, "towerTile.png");
@@ -30,7 +31,7 @@ public class TowerTile extends Tile {
      * isOccupied is a method that check if the position has a tower on
      * that position or not.
      *
-     * @return a boolean variabel
+     * @return true if the tile is occupied, else false.
      */
     public boolean isOccupied(){
         return this.isOccupied;
@@ -40,7 +41,8 @@ public class TowerTile extends Tile {
      * setOccupied is a method that will set that the positon of the tile
      * is taken so the compuputer knows that and does not set another
      * tower there.
-     * @param isOccupied
+     *
+     * @param isOccupied set true if the tile is occupied, else set false.
      */
     public void setOccupied(Boolean isOccupied){
         this.isOccupied = isOccupied;

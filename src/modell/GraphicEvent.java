@@ -33,8 +33,8 @@ public class GraphicEvent {
      * lived for the specified time (measured in game ticks) it will be removed. If this time is not set
      * the object will live until it is removed.
      *
-     * @param timestamp
-     * @param visibilityTime
+     * @param timestamp the time of the events creation
+     * @param visibilityTime the lifespan of the event.
      */
     public void setVisibilityTime(int timestamp, int visibilityTime) {
         this.visibilityTime = visibilityTime;

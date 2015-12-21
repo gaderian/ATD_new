@@ -12,7 +12,7 @@ import java.net.URL;
  * Class that holds information about a user, including its score, credits, userName, map playing. Is also able to
  * update those variables
  * <p>
- * Created by juliawestman & joakimzakrisson on 2015-12-06.
+ * Created by juliawestman and joakimzakrisson on 2015-12-06.
  */
 public class User {
     private int points;

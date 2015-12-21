@@ -22,7 +22,7 @@ public class End extends PathTile {
      * image that will be useed in the GUI
      *
      * @param p, The position of the tile
-     * @throws MalformedURLException
+     * @throws MalformedURLException if something goes wrong with the image url
      */
     public End(Position p) throws MalformedURLException {
         super(p, "pathTile.png");
@@ -37,7 +37,7 @@ public class End extends PathTile {
 
     /**
      * landOn will set that the unit has reach the goal
-     * @param unit
+     * @param unit the unit which lands on the tile
      */
     @Override
     public void landOn(Unit unit) {

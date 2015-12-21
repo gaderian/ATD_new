@@ -45,8 +45,8 @@ public abstract class Unit {
     /**
      * Initializes a new {@code Unit} which is being put on specified position.
      *
-     * @param pos the position
-     *
+     * @param pos the position of the unit
+     * @param id the id of the unit
      */
     public Unit(Position pos, int id) {
         this.pos = pos;

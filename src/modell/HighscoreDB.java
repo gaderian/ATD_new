@@ -81,7 +81,7 @@ public class HighscoreDB {
     /**
      * Shuts down the connection to the SQL server
      *
-     * @throws SQLException
+     * @throws SQLException when the SQL is somehow not correct.
      */
     public void shutdown() throws SQLException {
         Statement st = conn.createStatement();
@@ -91,6 +91,8 @@ public class HighscoreDB {
 
     /**
      * Adds a new user with a score to the highscore table
+     *
+     * @param map the map which the user has just played.
      */
     public void addUser(String map) {
         String userName = u.getUserName();
@@ -110,6 +112,8 @@ public class HighscoreDB {
 
     /**
      * Gets the data from the highscore table on the sql server and returns it in an ArrayList
+     *
+     * @return an list holding the result of the query.
      */
     public ArrayList getData() {
         String sql = "SELECT * FROM HIGHSCORE ORDER BY score DESC LIMIT 5";

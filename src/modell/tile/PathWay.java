@@ -28,8 +28,9 @@ public class PathWay extends PathTile {
     }
 
     /**
-     * LandOn will set the units next positon
-     * @param unit
+     * LandOn will set the units next position
+     *
+     * @param unit the unit which lands on the tile
      */
     @Override
     public void landOn(Unit unit) {
@@ -38,6 +39,13 @@ public class PathWay extends PathTile {
     }
 
 
+    /**
+     * SendToPos is an abstract method that all classes that extends
+     * pathTile will override when that type of class will be
+     * created
+     *
+     * @param posToSend, The position that the unit will be send to
+     */
     @Override
     public void sendToPos(Position posToSend) {
         nextPos = posToSend;

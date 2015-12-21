@@ -54,18 +54,18 @@ public class Tile {
 
     /**
      * getImage is a getter that will get the image of
-     * the main.tile
+     * the tile
      *
-     * @return image
+     * @return the image of the tile
      */
     public BufferedImage getImg() {
         return img;
     }
 
     /**
-     * getPostion is a getter that will get the position of the main.tile
+     * getPostion is a getter that will get the position of the tile
      *
-     * @return
+     * @return the position of the tile
      */
     public Position getPosition() {
         return pos;

@@ -200,7 +200,7 @@ public class Game {
     /**
      * add a new unit to the game. This function will place the unit at the start of the game.
      *
-     * @param unit
+     * @param unit the unit to add
      */
     public void addUnit(Unit unit){
         TileAction currentTile;
@@ -288,7 +288,7 @@ public class Game {
     /**
      * Get an object that represents how the game looks graphically at the moment of the call.
      *
-     * @return
+     * @return the CurrentGraphicState of this Game
      */
     public CurrentGraphicState getGraphicState(){
         return this.graphicState;
@@ -297,7 +297,7 @@ public class Game {
     /**
      * Get the next id to give to a object in the game.
      *
-     * @return
+     * @return the next id to give a object in the game
      */
     public int getNextObjectId(){
         int ret = this.nextId;

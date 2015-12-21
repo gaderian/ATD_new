@@ -19,9 +19,10 @@ public abstract class PathTile extends Tile implements TileAction {
     /**
      * PathTile is a constructor that will send the parameters to Tile
      * that PathTile extends
-     * @param p
-     * @param imgPath
-     * @throws MalformedURLException
+     *
+     * @param p the position of the tile
+     * @param imgPath the path to the tiles image
+     * @throws MalformedURLException if something goes wrong with the image url
      */
     protected PathTile(Position p, String imgPath)
             throws MalformedURLException {
@@ -30,9 +31,11 @@ public abstract class PathTile extends Tile implements TileAction {
     }
 
     /**
-     * SetNextPos is an abstarctmetod that all classes that extends
+     * SetNextPos is an abstarct method that all classes that extends
      * PathTile will override
-     * @param posToSet
+     *
+     * @param posToSet the position which the tile will give to any units
+     *                 stepping on it
      */
     protected void setNextPos(Position posToSet){
 
@@ -40,9 +43,10 @@ public abstract class PathTile extends Tile implements TileAction {
     }
 
     /**
-     * GetNextPos is a abstractmetod that all classes that extends
+     * GetNextPos is a abstract method that all classes that extends
      * PathTile will override
-     * @return
+     *
+     * @return the position of the tile
      */
     public Position getNextPos(){
 
@@ -50,10 +54,10 @@ public abstract class PathTile extends Tile implements TileAction {
     }
 
     /**
-     * SendToPos is an abstractmetod that all classes that extends
+     * SendToPos is an abstract method that all classes that extends
      * pathTile will override when that type of class will be
      * created
-     * @param posToSend, The posistion that the unit will be send to
+     * @param posToSend, The position that the unit will be send to
      */
     public abstract void sendToPos(Position posToSend);
 

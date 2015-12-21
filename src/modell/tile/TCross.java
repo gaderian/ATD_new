@@ -31,9 +31,10 @@ public class TCross extends PathTile {
     /**
      * setPositions is a method that will set the positions that
      * the user can chose between to send the units to
-     * @param posToSet
+     *
+     * @param posToSet a position to add
      */
-    public void setPosistions(Position posToSet){
+    public void setPositions(Position posToSet){
         if(defaultNextPos==null){
             defaultNextPos = posToSet;
         } else {
@@ -44,7 +45,8 @@ public class TCross extends PathTile {
     /**
      * getTCrossImg is a method that will check were the user
      * wants to send theirs units to
-     * @return, the imgage with the right arrow
+     *
+     * @return, the image with the right arrow
      */
     private String getTCrossImg(){
         Position nextPos = getNextPos();
@@ -63,8 +65,8 @@ public class TCross extends PathTile {
 
 
     /**
-     * changeDriecion is a method that will change the units
-     * direction when the user choose a diffrent way
+     * changeDirection is a method that will change the units
+     * direction when the user choose a different way
      */
     public void changeDirection(){
 
@@ -80,14 +82,14 @@ public class TCross extends PathTile {
     }
 
     /**
-     * sendToPos will set the next psotion that the method landOn
+     * sendToPos will set the next position that the method landOn
      * will send the units to
      *
-     * @param posToSend, The posistion that the unit will be send to
+     * @param posToSend, The position that the unit will be send to
      */
     @Override
     public void sendToPos(Position posToSend) {
-        setPosistions(posToSend);
+        setPositions(posToSend);
         setNextPos(defaultNextPos);
     }
 
@@ -95,6 +97,8 @@ public class TCross extends PathTile {
      * landOn is a method that will set the next position that the
      * unit will go to, depending on the path that the user will
      * choose.
+     *
+     * @param unit, the unit that will step on the tile
      */
     @Override
     public void landOn(Unit unit) {

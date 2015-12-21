@@ -4,7 +4,7 @@ import modell.Position;
 
 /**
  * Class:       AirTower
- * <p/>
+ *
  * Author:      Erik Moström
  * cs-user:     dv14emm
  * Date:        2015-11-30

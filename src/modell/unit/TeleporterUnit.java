@@ -48,7 +48,8 @@ public class TeleporterUnit extends Unit {
 
     /**
      * Returns a teleport tile to place in the map.
-     * @return
+     *
+     * @return a teleport tile to place in the map
      */
     @Override
     public Tile click(){
